@@ -9,62 +9,29 @@ import java.util.*;
 public class MAIN {
 
     public static void main(String[] args) {
+        // Conteo de genes en una cadena de ADN
         System.out.println("Conteo de Genes");
         String cadenaADN = "ATGCGTAGATGCGATAG";
         int numeroGenes = contarGenes(cadenaADN, 0);
         System.out.println("El número de genes en la cadena de ADN es: " + numeroGenes);
 
+        // Cálculo de combinaciones genéticas
         System.out.println("Combinaciones Genéticas");
         int numeroGenes2 = 2;
         int numeroAlelos = 4;
         int combinacionesGeneticas = combinacionesGeneticas(numeroGenes2, numeroAlelos);
         System.out.println("El número de combinaciones genéticas posibles es: " + combinacionesGeneticas);
 
+        // Gestión de fechas
+        gestionarFechas();
 
-            System.out.println("Gestión de Fechas");
-            Scanner scanner = new Scanner(System.in);
-            List<LocalDate> fechas = new ArrayList<>();
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-            while (true) {
-                System.out.print("Introduce una fecha (dd/MM/yyyy) o escribe 'fin' para terminar: ");
-                String entrada = scanner.nextLine();
-                if (entrada.equalsIgnoreCase("fin")) {
-                    break;
-                }
-                try {
-                    LocalDate fecha = LocalDate.parse(entrada, formatter);
-                    fechas.add(fecha);
-                } catch (DateTimeParseException e) {
-                    System.out.println("Formato de fecha inválido. Por favor, intenta nuevamente.");
-                }
-            }
-            Collections.sort(fechas);
-            System.out.println("Fechas ordenadas:");
-            for (LocalDate fecha : fechas) {
-                System.out.println(fecha.format(formatter));
-            }
-
-
+        // Búsqueda binaria en un archivo de texto
         System.out.println("Búsqueda Binaria");
-        try (BufferedReader br = new BufferedReader(new FileReader("/Users/adrianareyesmorera/Desktop/CASO5.txt"))) {
-            String linea;
-            List<String> listaLineas = new ArrayList<>();
-            while ((linea = br.readLine()) != null) {
-                listaLineas.add(linea);
-            }
-            String[] lineas = listaLineas.toArray(new String[0]);
-            Arrays.sort(lineas);
-            String palabraBuscada = "ADN";
-            int posicion2 = Arrays.binarySearch(lineas, palabraBuscada);
-            if (posicion2 >= 0) {
-                System.out.println("La palabra '" + palabraBuscada + "' se encuentra en la posición " + posicion2);
-            } else {
-                System.out.println("La palabra '" + palabraBuscada + "' no se encuentra en el archivo");
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        String filePath = "/Users/adrianareyesmorera/Desktop/CASO5.txt"; // Asegúrate de que la ruta del archivo sea correcta
+        String palabraBuscada = "ADN";
+        busquedaBinaria(filePath, palabraBuscada);
 
+        // Listado de números en un rango dado
         System.out.println("Listado de números en un rango");
         int inicio = 1;
         int fin = 10;
@@ -72,6 +39,7 @@ public class MAIN {
         listar(inicio, fin);
     }
 
+    // Método para contar genes en una cadena de ADN
     public static int contarGenes(String cadenaADN, int posicion) {
         if (cadenaADN == null || cadenaADN.isEmpty() || posicion >= cadenaADN.length()) {
             return 0;
@@ -90,6 +58,7 @@ public class MAIN {
         return 1 + contarGenes(cadenaADN, finGen);
     }
 
+    // Método para calcular combinaciones genéticas
     public static int combinacionesGeneticas(int numeroGenes, int numeroAlelos) {
         if (numeroGenes <= 0) {
             return 0;
@@ -100,6 +69,7 @@ public class MAIN {
         return numeroAlelos * combinacionesGeneticas(numeroGenes - 1, numeroAlelos);
     }
 
+    // Método para listar números en un rango
     public static void listar(int inicio, int fin) {
         if (inicio <= fin) {
             System.out.print(inicio + " ");
@@ -109,7 +79,34 @@ public class MAIN {
         }
     }
 
-    public static void BusquedaBinaria(String filePath, String targetWord) {
+    // Método para gestionar la entrada de fechas por parte del usuario
+    public static void gestionarFechas() {
+        System.out.println("Gestión de Fechas (escribe 'fin' para continuar con el programa)");
+        Scanner scanner = new Scanner(System.in);
+        List<LocalDate> fechas = new ArrayList<>();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        while (true) {
+            System.out.print("Introduce una fecha (dd/MM/yyyy) o escribe 'fin' para terminar: ");
+            String entrada = scanner.nextLine();
+            if (entrada.equalsIgnoreCase("fin")) {
+                break;
+            }
+            try {
+                LocalDate fecha = LocalDate.parse(entrada, formatter);
+                fechas.add(fecha);
+            } catch (DateTimeParseException e) {
+                System.out.println("Formato de fecha inválido. Por favor, intenta nuevamente.");
+            }
+        }
+        Collections.sort(fechas);
+        System.out.println("Fechas ordenadas:");
+        for (LocalDate fecha : fechas) {
+            System.out.println(fecha.format(formatter));
+        }
+    }
+
+    // Método para realizar una búsqueda binaria en un archivo de texto
+    public static void busquedaBinaria(String filePath, String targetWord) {
         try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
             String linea;
             List<String> listaLineas = new ArrayList<>();
@@ -118,9 +115,9 @@ public class MAIN {
             }
             String[] lineas = listaLineas.toArray(new String[0]);
             Arrays.sort(lineas);
-            int posicion2 = Arrays.binarySearch(lineas, targetWord);
-            if (posicion2 >= 0) {
-                System.out.println("La palabra '" + targetWord + "' se encuentra en la posición " + posicion2);
+            int posicion = Arrays.binarySearch(lineas, targetWord);
+            if (posicion >= 0) {
+                System.out.println("La palabra '" + targetWord + "' se encuentra en la posición " + posicion);
             } else {
                 System.out.println("La palabra '" + targetWord + "' no se encuentra en el archivo");
             }
@@ -128,6 +125,4 @@ public class MAIN {
             e.printStackTrace();
         }
     }
-
-
 }
