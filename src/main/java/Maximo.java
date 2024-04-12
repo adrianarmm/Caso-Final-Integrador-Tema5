@@ -7,4 +7,11 @@ public class Maximo {
             return Math.max(datos[indice], maximoAnterior);
         }
     }
+
+    public static void main(String[] args) {
+        int[] datos = { 1, 2, 3, 4, 5 };
+        int indice = datos.length - 1;
+        int resultado = maximo(datos, indice);
+        System.out.println("El número máximo en el arreglo es: " + resultado);
+    }
 }
