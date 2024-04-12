@@ -40,10 +40,11 @@ public class MAIN {
     }
 
     // Demostracion de quicksort
-    int[] arreglo = {5, 2, 9, 1, 5, 6};
-        System.out.println("\nArreglo original: " + Arrays.toString(arreglo));
-        quicksort(arreglo, 0, arreglo.length - 1);
-        System.out.println("Arreglo ordenado: " + Arrays.toString(arreglo));
+   System.out.println("Demostración de Quicksort");
+    int[] arreglo = { 5, 2, 9, 1, 5, 6 };
+    System.out.println("Arreglo original: " + Arrays.toString(arreglo));
+    quicksort(arreglo, 0, arreglo.length - 1);
+    System.out.println("Arreglo ordenado: " + Arrays.toString(arreglo));
 }
 
 // Método para realizar la partición del arreglo (parte del quicksort)
