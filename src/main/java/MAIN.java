@@ -7,7 +7,16 @@ public class MAIN {
         int numeroGenes = contarGenes(cadenaADN, posicion);
         System.out.println("El número de genes en la cadena de ADN es: " + numeroGenes);
 
+   System.out.println("Combinaciones Genéticas");
+        int numeroGenes = 2;
+        int numeroAlelos = 4;
+        int combinacionesGeneticas = CombinacionesGeneticas(numeroGenes, numeroAlelos);
+        System.out.println("El número de combinaciones genéticas posibles es: " + combinacionesGeneticas);
     }
+    public static int contarGenes(String cadenaADN, int posicion) {
+        if (cadenaADN == null || cadenaADN.isEmpty()) {
+            return 0;
+        }
 
 
 }
