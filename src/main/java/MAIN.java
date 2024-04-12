@@ -1,9 +1,12 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
+import java.util.Scanner;
 
 public class MAIN {
 
@@ -20,25 +23,23 @@ public class MAIN {
         int combinacionesGeneticas = CombinacionesGeneticas(numeroGenes, numeroAlelos);
         System.out.println("El número de combinaciones genéticas posibles es: " + combinacionesGeneticas);
 
-        System.out.println("Búsqueda Binaria");
-        try (BufferedReader br = new BufferedReader(new FileReader("/Users/adrianareyesmorera/Desktop/CASO5.txt"))) {
-            String linea;
-            List<String> listaLineas = new ArrayList<>();
-            while ((linea = br.readLine()) != null) {
-                listaLineas.add(linea);
+        System.out.println("Gestión de Fechas");
+        Scanner scanner = new Scanner(System.in);
+        List<LocalDate> fechas = new ArrayList<>();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        while (true) {
+            System.out.print("Introduce una fecha (dd/MM/yyyy) o escribe 'fin' para terminar: ");
+            String entrada = scanner.nextLine();
+            if (entrada.equalsIgnoreCase("fin")) {
+                break;
             }
-            // Convierte la lista a un arreglo para poder usar búsqueda binaria
-            String[] lineas = listaLineas.toArray(new String[0]);
-            Arrays.sort(lineas); // Ahora es seguro ordenar el arreglo, ya que no contiene nulls
-            String palabraBuscada = "ADN";
-            int posicion2 = Arrays.binarySearch(lineas, palabraBuscada);
-            if (posicion2 >= 0) {
-                System.out.println("La palabra '" + palabraBuscada + "' se encuentra en la posición " + posicion2);
-            } else {
-                System.out.println("La palabra '" + palabraBuscada + "' no se encuentra en el archivo");
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
+            LocalDate fecha = LocalDate.parse(entrada, formatter);
+            fechas.add(fecha);
+        }
+        Collections.sort(fechas);
+        System.out.println("Fechas ordenadas:");
+        for (LocalDate fecha : fechas) {
+            System.out.println(fecha.format(formatter));
         }
     }
 
@@ -64,7 +65,7 @@ public class MAIN {
         if (numeroGenes == 1) {
             return numeroAlelos;
         }
-        return numeroAlelos * CombinacionesGeneticas(numeroGenes - 1, numeroAlelos);
+        return numeroAlelos * CombinacionesGeneticas(numeroGenes -1, numeroAlelos);
     }
 
 }
