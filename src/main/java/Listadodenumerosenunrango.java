@@ -1,4 +1,4 @@
-public class Listadodenúmerosenunrango {
+public class Listadodenumerosenunrango {
 
         public static void listar(int inicio, int fin) {
             if (inicio <= fin) {
