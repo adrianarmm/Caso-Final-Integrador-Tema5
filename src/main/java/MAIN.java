@@ -39,6 +39,13 @@ public class MAIN {
         listar(inicio, fin);
     }
 
+    // Maximo posicion
+
+        int[] array = {1, 2, 3, 4, 5};
+        int n = array.length;
+        int maximo = MaximoPosicion(array, n);
+        System.out.println("\nEl número máximo en el arreglo es: " + maximo);
+
 
 
     // Método para contar genes en una cadena de ADN
