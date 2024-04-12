@@ -40,12 +40,12 @@ public class MAIN {
     }
 
     // Maximo
-    System.out.println("Maximo");
-    int[] datos = {1, 5, 3, 8, 2, 9, 4};
-    int indice = datos.length - 1;
-    int resultado = maximo(datos, indice);
-    System.out.println("El número máximo en el arreglo es: " + resultado);
-}
+    public static int maximo(int[] array, int n) {
+        if (n == 1) {
+            return array[0];
+        }
+        return Math.max(array[n - 1], maximo(array, n - 1));
+    }
 
     // Método para contar genes en una cadena de ADN
     public static int contarGenes(String cadenaADN, int posicion) {
@@ -132,8 +132,6 @@ public class MAIN {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
-}
 
-public void main() {
+    }
 }
