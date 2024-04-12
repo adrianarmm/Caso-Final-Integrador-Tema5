@@ -40,13 +40,10 @@ public class MAIN {
     }
 
     // Maximo posicion
-
-        int[] array = {1, 2, 3, 4, 5};
-        int n = array.length;
-        int maximo = MaximoPosicion(array, n);
-        System.out.println("\nEl número máximo en el arreglo es: " + maximo);
-
-
+    int[] array = {1, 2, 3, 4, 5, 6, 10, 8, 9};
+    int maximo = MaximoPosicion(array, array.length);
+    System.out.print("\nEl número máximo en el arreglo es: " + maximo);
+}
 
     // Método para contar genes en una cadena de ADN
     public static int contarGenes(String cadenaADN, int posicion) {
