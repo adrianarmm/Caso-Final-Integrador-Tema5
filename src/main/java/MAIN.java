@@ -39,30 +39,29 @@ public class MAIN {
         listar(inicio, fin);
     }
 
-    // Demostracion de quicksort
-    public static void demoQuicksort() {
-            int[] arreglo = { 5, 2, 9, 1, 5, 6 };
-            System.out.println("Arreglo original: " + Arrays.toString(arreglo));
-            quicksort(arreglo, 0, arreglo.length - 1);
-            System.out.println("Arreglo ordenado: " + Arrays.toString(arreglo));
-        }
-
-
-    // Método para ordenar las líneas de un archivo de texto
-    public static void ordenarLineasArchivo(String filePath) {
+    // Ordenar líneas de un archivo de texto
+    ordenarLineasArchivo(filePath) {
         try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
             String linea;
-            List<String> listaLineas = new ArrayList<>();
+            ArrayList<String> lineas = new ArrayList<>();
             while ((linea = br.readLine()) != null) {
-                listaLineas.add(linea);
+                lineas.add(linea);
             }
-            Collections.sort(listaLineas);
-            System.out.println("Líneas ordenadas:");
-            for (String lineaOrdenada : listaLineas) {
-                System.out.println(lineaOrdenada);
+            Collections.sort(lineas);
+            System.out.println("\nLíneas ordenadas del archivo:");
+            for (String s : lineas) {
+                System.out.println(s);
             }
         } catch (IOException e) {
             e.printStackTrace();
+    }
+}
+
+    // Demostración del quicksort
+    demoQuicksort();
+
+}
+
 
 // Método para realizar la partición del arreglo (parte del quicksort)
 public static int partition(int[] arreglo, int inicio, int fin) {
@@ -199,38 +198,41 @@ public static int wait(int[] arreglo, int inicio, int fin) {
     }
 
 
-public void main() {
-        int[] arreglo = { 5, 2, 9, 1, 5, 6 };
-        System.out.println("Arreglo original: " + Arrays.toString(arreglo));
-        wait(arreglo, 0, arreglo.length - 1);
-        System.out.println("Arreglo ordenado: " + Arrays.toString(arreglo));
-        
+public static void quicksort(int[] arreglo, int inicio, int fin) {
+    if (inicio < fin) {
+        int indiceParticion = partition(arreglo, inicio, fin);
+        quicksort(arreglo, inicio, indiceParticion - 1);
+        quicksort(arreglo, indiceParticion + 1, fin);
     }
-            public static void demoQuicksort() {
-                int[] arreglo = {5, 2, 9, 1, 5, 6};
-                System.out.println("\nArreglo original: " + Arrays.toString(arreglo));
-                quicksort(arreglo, 0, arreglo.length - 1);
-                System.out.println("Arreglo ordenado: " + Arrays.toString(arreglo));
-            }
+}
+    public static void demoQuicksort() {
+    int[] arreglo = {5, 2, 9, 1, 5, 6};
+    System.out.println("\nArreglo original: " + Arrays.toString(arreglo));
+    quicksort(arreglo, 0, arreglo.length - 1);
+    System.out.println("Arreglo ordenado: " + Arrays.toString(arreglo));
+}
 
-            public static void ordenarLineasArchivo(String filePath) {
-                try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
-                    String linea;
-                    ArrayList<String> lineas = new ArrayList<>();
-                    while ((linea = br.readLine()) != null) {
-                        lineas.add(linea);
-                    }
-                    Collections.sort(lineas);
-                    System.out.println("\nLíneas ordenadas del archivo:");
-                    for (String s : lineas) {
-                        System.out.println(s);
-                    }
+public static void ordenarLineasArchivo(String filePath) {
+    try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
+        String linea;
+        ArrayList<String> lineas = new ArrayList<>();
+        while ((linea = br.readLine()) != null) {
+            lineas.add(linea);
+        }
+        Collections.sort(lineas);
+        System.out.println("\nLíneas ordenadas del archivo:");
+        for (String s : lineas) {
+            System.out.println(s);
+        }
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
             }
         }
+    }
 }
+
+
 
 
 
