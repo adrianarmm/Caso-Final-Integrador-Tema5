@@ -20,6 +20,11 @@ public class MAIN {
     if (!cadenaADN.contains("ATG")) {
             return 0;
         }
-        int finGen = Math.max(cadenaADN.indexOf("TGA", posicion), cadenaADN.indexOf("TAG", posicion));
+    int finGen = Math.max(cadenaADN.indexOf("TGA", posicion), cadenaADN.indexOf("TAG", posicion));
 
+        if (finGen == -1) {
+            return 0;
+        }
+        return 1 + contarGenes(cadenaADN.substring(finGen), finGen);
+    }
 }
