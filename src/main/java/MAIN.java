@@ -39,13 +39,7 @@ public class MAIN {
         listar(inicio, fin);
     }
 
-    // Maximo
-    public static int maximo(int[] array, int n) {
-        if (n == 1) {
-            return array[0];
-        }
-        return Math.max(array[n - 1], maximo(array, n - 1));
-    }
+
 
     // Método para contar genes en una cadena de ADN
     public static int contarGenes(String cadenaADN, int posicion) {
@@ -114,7 +108,7 @@ public class MAIN {
     }
 
     // Método para realizar una búsqueda binaria en un archivo de texto
-    public static void busquedaBinaria(String filePath, String targetWord) {
+    public static int busquedaBinaria(String filePath, String targetWord) {
         try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
             String linea;
             List<String> listaLineas = new ArrayList<>();
@@ -133,5 +127,9 @@ public class MAIN {
             e.printStackTrace();
         }
 
-    }
+        return -1;
+
+}
+
+
 }
