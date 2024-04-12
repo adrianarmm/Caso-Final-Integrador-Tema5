@@ -8,7 +8,7 @@ public class MAIN {
         System.out.println("El número de genes en la cadena de ADN es: " + numeroGenes);
 
    System.out.println("Combinaciones Genéticas");
-        int numeroGenes = 2;
+        int numeroGenes2 = 2;
         int numeroAlelos = 4;
         int combinacionesGeneticas = CombinacionesGeneticas(numeroGenes, numeroAlelos);
         System.out.println("El número de combinaciones genéticas posibles es: " + combinacionesGeneticas);
@@ -37,4 +37,5 @@ public class MAIN {
         }
         return numeroAlelos * CombinacionesGeneticas(numeroGenes - 1, numeroAlelos);
     }
+
 }
