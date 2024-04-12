@@ -23,24 +23,32 @@ public class MAIN {
         int combinacionesGeneticas = CombinacionesGeneticas(numeroGenes, numeroAlelos);
         System.out.println("El número de combinaciones genéticas posibles es: " + combinacionesGeneticas);
 
-        System.out.println("Gestión de Fechas");
-        Scanner scanner = new Scanner(System.in);
-        List<LocalDate> fechas = new ArrayList<>();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        while (true) {
-            System.out.print("Introduce una fecha (dd/MM/yyyy) o escribe 'fin' para terminar: ");
-            String entrada = scanner.nextLine();
-            if (entrada.equalsIgnoreCase("fin")) {
-                break;
+        System.out.println("Búsqueda Binaria");
+        try (BufferedReader br = new BufferedReader(new FileReader("/Users/adrianareyesmorera/Desktop/CASO5.txt"))) {
+            String linea;
+            List<String> listaLineas = new ArrayList<>();
+            while ((linea = br.readLine()) != null) {
+                listaLineas.add(linea);
             }
-            LocalDate fecha = LocalDate.parse(entrada, formatter);
-            fechas.add(fecha);
+            // Convierte la lista a un arreglo para poder usar búsqueda binaria
+            String[] lineas = listaLineas.toArray(new String[0]);
+            Arrays.sort(lineas); // Ahora es seguro ordenar el arreglo, ya que no contiene nulls
+            String palabraBuscada = "ADN";
+            int posicion2 = Arrays.binarySearch(lineas, palabraBuscada);
+            if (posicion2 >= 0) {
+                System.out.println("La palabra '" + palabraBuscada + "' se encuentra en la posición " + posicion2);
+            } else {
+                System.out.println("La palabra '" + palabraBuscada + "' no se encuentra en el archivo");
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-        Collections.sort(fechas);
-        System.out.println("Fechas ordenadas:");
-        for (LocalDate fecha : fechas) {
-            System.out.println(fecha.format(formatter));
-        }
+
+        System.out.println("Listado de números en un rango");
+        int inicio = 1;
+        int fin = 10;
+        System.out.print("Los números en el rango de " + inicio + " a " + fin + " son: ");
+        listar(inicio, fin);
     }
 
     public static int contarGenes(String cadenaADN, int posicion) {
@@ -66,6 +74,13 @@ public class MAIN {
             return numeroAlelos;
         }
         return numeroAlelos * CombinacionesGeneticas(numeroGenes -1, numeroAlelos);
+    }
+
+    public static void listar(int inicio, int fin) {
+        if (inicio <= fin) {
+            System.out.print(inicio + " ");
+            listar(inicio + 1, fin);
+        }
     }
 
 }
