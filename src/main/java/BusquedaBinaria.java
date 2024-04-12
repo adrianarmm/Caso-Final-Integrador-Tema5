@@ -16,7 +16,7 @@ public class BusquedaBinaria {
             // Convierte la lista a un arreglo para poder usar búsqueda binaria
             String[] lineas = listaLineas.toArray(new String[0]);
             Arrays.sort(lineas); // Ahora es seguro ordenar el arreglo, ya que no contiene nulls
-            String palabraBuscada = "ejemplo";
+            String palabraBuscada = "ADN";
             int posicion = Arrays.binarySearch(lineas, palabraBuscada);
             if (posicion >= 0) {
                 System.out.println("La palabra '" + palabraBuscada + "' se encuentra en la posición " + posicion);
