@@ -6,7 +6,7 @@ import java.util.Collections;
 
 public class OrdenarLineas {
     public static void main(String[] args) {
-        try (BufferedReader br = new BufferedReader(new FileReader("/Users/adrianareyesmorera/Desktop/CASO5"))) {
+        try (BufferedReader br = new BufferedReader(new FileReader("/Users/adrianareyesmorera/Desktop/CASO5.txt"))) {
             String linea;
             ArrayList<String> lineas = new ArrayList<>();
             while ((linea = br.readLine()) != null) {
