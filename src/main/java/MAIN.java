@@ -27,4 +27,14 @@ public class MAIN {
         }
         return 1 + contarGenes(cadenaADN.substring(finGen), finGen);
     }
+
+    public static int CombinacionesGeneticas(int numeroGenes, int numeroAlelos) {
+        if (numeroGenes <= 0) {
+            return 0;
+        }
+        if (numeroGenes == 1) {
+            return numeroAlelos;
+        }
+        return numeroAlelos * CombinacionesGeneticas(numeroGenes - 1, numeroAlelos);
+    }
 }
