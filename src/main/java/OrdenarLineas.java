@@ -1,26 +1,23 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.security.PublicKey;
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.Collections;
 
 public class OrdenarLineas {
     public static void main(String[] args) {
         try (BufferedReader br = new BufferedReader(new FileReader("archivo.txt"))) {
             String linea;
-            int contador = 0;
-            String[] lineas = new String[100];
+            ArrayList<String> lineas = new ArrayList<>();
             while ((linea = br.readLine()) != null) {
-                lineas[contador] = linea;
-                contador++;
+                lineas.add(linea); // Añadir línea leída a la lista
             }
-            Arrays.sort(lineas);
+            Collections.sort(lineas); // Ordenar la lista
             for (String s : lineas) {
-                System.out.println(s);
+                System.out.println(s); // Imprimir líneas ordenadas
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-
 }
