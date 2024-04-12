@@ -1,10 +1,10 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+import java.util.*;
 
 public class MAIN {
 
@@ -21,26 +21,30 @@ public class MAIN {
         System.out.println("El número de combinaciones genéticas posibles es: " + combinacionesGeneticas);
 
 
-        System.out.println("Gestión de Fechas");
-        Scanner scanner = new Scanner(System.in);
-    List<LocalDate> fechas = new ArrayList<>();
-               DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-              while (true) {
-                       System.out.print("Introduce una fecha (dd/MM/yyyy) o escribe 'fin' para terminar: ");
-            String entrada = scanner.nextLine();
-                     if (entrada.equalsIgnoreCase("fin")) {
-                              break;
+            System.out.println("Gestión de Fechas");
+            Scanner scanner = new Scanner(System.in);
+            List<LocalDate> fechas = new ArrayList<>();
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+            while (true) {
+                System.out.print("Introduce una fecha (dd/MM/yyyy) o escribe 'fin' para terminar: ");
+                String entrada = scanner.nextLine();
+                if (entrada.equalsIgnoreCase("fin")) {
+                    break;
+                }
+                try {
+                    LocalDate fecha = LocalDate.parse(entrada, formatter);
+                    fechas.add(fecha);
+                } catch (DateTimeParseException e) {
+                    System.out.println("Formato de fecha inválido. Por favor, intenta nuevamente.");
+                }
             }
-                      LocalDate fecha = LocalDate.parse(entrada, formatter);
-                        fechas.add(fecha);
-                   }
-               Collections.sort(fechas);
-               System.out.println("Fechas ordenadas:");
-               for (LocalDate fecha : fechas) {
-                    System.out.println(fecha.format(formatter));
-        }
-    }
-45
+            Collections.sort(fechas);
+            System.out.println("Fechas ordenadas:");
+            for (LocalDate fecha : fechas) {
+                System.out.println(fecha.format(formatter));
+            }
+
+
         System.out.println("Búsqueda Binaria");
         try (BufferedReader br = new BufferedReader(new FileReader("/Users/adrianareyesmorera/Desktop/CASO5.txt"))) {
             String linea;
