@@ -11,7 +11,7 @@ public class GestionFechas {
         List<LocalDate> fechas = new ArrayList<>();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         while (true) {
-            System.out.print("Introduce una fecha (20/08/2005) o escribe 'fin' para terminar: ");
+            System.out.print("Introduce una fecha (dd/MM/yyyy) o escribe 'fin' para terminar: ");
             String entrada = scanner.nextLine();
             if (entrada.equalsIgnoreCase("fin")) {
                 break;
