@@ -39,18 +39,39 @@ public class MAIN {
         listar(inicio, fin);
     }
 
-    // Método para ordenar un arreglo de enteros usando Quicksort
-
-    public static void quicksort(int[] arreglo, int inicio, int fin) {
-        if (inicio < fin) {
-            int indiceParticion = 0;
-            quicksort(arreglo, inicio, fin);
-            quicksort(arreglo, inicio, indiceParticion - 1);
-            quicksort(arreglo, indiceParticion + 1, fin);
-        }
-    }
+    // Demostracion de quicksort
+    int[] arreglo = {5, 2, 9, 1, 5, 6};
+        System.out.println("\nArreglo original: " + Arrays.toString(arreglo));
+        quicksort(arreglo, 0, arreglo.length - 1);
+        System.out.println("Arreglo ordenado: " + Arrays.toString(arreglo));
 }
 
+// Método para realizar la partición del arreglo (parte del quicksort)
+public static int partition(int[] arreglo, int inicio, int fin) {
+    int pivote = arreglo[fin];
+    int i = (inicio - 1);
+    for (int j = inicio; j < fin; j++) {
+        if (arreglo[j] <= pivote) {
+            i++;
+            int temp = arreglo[i];
+            arreglo[i] = arreglo[j];
+            arreglo[j] = temp;
+        }
+    }
+    int temp = arreglo[i + 1];
+    arreglo[i + 1] = arreglo[fin];
+    arreglo[fin] = temp;
+    return i + 1;
+}
+}
+
+public static void quicksort(int[] arreglo, int inicio, int fin) {
+    if (inicio < fin) {
+        int indiceParticion = OptimizedQuicksort.partition(arreglo, inicio, fin);
+        quicksort(arreglo, inicio, indiceParticion - 1);
+        quicksort(arreglo, indiceParticion + 1, fin);
+    }
+}
 
     // Método para contar genes en una cadena de ADN
     public static int contarGenes(String cadenaADN, int posicion) {
