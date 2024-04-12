@@ -1,4 +1,4 @@
-public int ConteodeGenes(String cadenaADN, int posicion) {
+public static int ConteodeGenes(String cadenaADN, int posicion) {
     // Si la cadena de ADN es nula o vacía, no hay genes que contar
     if (cadenaADN == null || cadenaADN.isEmpty()) {
         return 0;
@@ -21,6 +21,10 @@ public int ConteodeGenes(String cadenaADN, int posicion) {
     return 1 + ConteodeGenes(cadenaADN.substring(finGen), finGen);
 }
 
-public void main() {
+public static void main() {
+    String cadenaADN = "ATGCGTAGATGCGATAG";
+    int posicion = 0;
+    int numeroGenes = ConteodeGenes (cadenaADN, posicion);
+    System.out.println("El número de genes en la cadena de ADN es: " + numeroGenes);
 
 }
