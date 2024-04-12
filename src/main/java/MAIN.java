@@ -17,6 +17,9 @@ public class MAIN {
         if (cadenaADN == null || cadenaADN.isEmpty()) {
             return 0;
         }
-
+    if (!cadenaADN.contains("ATG")) {
+            return 0;
+        }
+        int finGen = Math.max(cadenaADN.indexOf("TGA", posicion), cadenaADN.indexOf("TAG", posicion));
 
 }
