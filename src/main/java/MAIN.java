@@ -109,4 +109,25 @@ public class MAIN {
         }
     }
 
+    public static void BusquedaBinaria(String filePath, String targetWord) {
+        try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
+            String linea;
+            List<String> listaLineas = new ArrayList<>();
+            while ((linea = br.readLine()) != null) {
+                listaLineas.add(linea);
+            }
+            String[] lineas = listaLineas.toArray(new String[0]);
+            Arrays.sort(lineas);
+            int posicion2 = Arrays.binarySearch(lineas, targetWord);
+            if (posicion2 >= 0) {
+                System.out.println("La palabra '" + targetWord + "' se encuentra en la posición " + posicion2);
+            } else {
+                System.out.println("La palabra '" + targetWord + "' no se encuentra en el archivo");
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
 }
