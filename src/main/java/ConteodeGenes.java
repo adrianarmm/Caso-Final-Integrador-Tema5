@@ -22,4 +22,5 @@ public int ConteodeGenes(String cadenaADN, int posicion) {
 }
 
 public void main() {
+
 }
