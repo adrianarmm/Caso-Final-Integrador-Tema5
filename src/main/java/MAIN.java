@@ -3,6 +3,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public class MAIN {
@@ -19,6 +20,27 @@ public class MAIN {
         int combinacionesGeneticas = combinacionesGeneticas(numeroGenes2, numeroAlelos);
         System.out.println("El número de combinaciones genéticas posibles es: " + combinacionesGeneticas);
 
+
+        System.out.println("Gestión de Fechas");
+        Scanner scanner = new Scanner(System.in);
+    List<LocalDate> fechas = new ArrayList<>();
+               DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+              while (true) {
+                       System.out.print("Introduce una fecha (dd/MM/yyyy) o escribe 'fin' para terminar: ");
+            String entrada = scanner.nextLine();
+                     if (entrada.equalsIgnoreCase("fin")) {
+                              break;
+            }
+                      LocalDate fecha = LocalDate.parse(entrada, formatter);
+                        fechas.add(fecha);
+                   }
+               Collections.sort(fechas);
+               System.out.println("Fechas ordenadas:");
+               for (LocalDate fecha : fechas) {
+                    System.out.println(fecha.format(formatter));
+        }
+    }
+45
         System.out.println("Búsqueda Binaria");
         try (BufferedReader br = new BufferedReader(new FileReader("/Users/adrianareyesmorera/Desktop/CASO5.txt"))) {
             String linea;
