@@ -113,8 +113,18 @@ public class MAIN {
 
 
     private static void calcularCombinacionesGeneticasDemo() {
-        // Esta es una función de marcador de posición. Deberías reemplazarla con tu implementación real.
-        System.out.println("Función de cálculo de combinaciones genéticas no implementada.");
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Ingrese el número de genes: ");
+        int numeroGenes = scanner.nextInt();
+        System.out.print("Ingrese el número de alelos por gen: ");
+        int numeroAlelos = scanner.nextInt();
+
+        int combinaciones = calcularCombinacionesGeneticas(numeroGenes, numeroAlelos);
+        System.out.println("El número de combinaciones genéticas posibles es: " + combinaciones);
+    }
+
+    private static int calcularCombinacionesGeneticas(int numeroGenes, int numeroAlelos) {
+        return (int) Math.pow(numeroAlelos, numeroGenes);
     }
 
     private static void gestionarFechas() {
