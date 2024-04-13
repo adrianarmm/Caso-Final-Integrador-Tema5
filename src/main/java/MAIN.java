@@ -182,7 +182,7 @@ public static long Sumatoriadenumerosnaturales(int n) {
         return n + Sumatoriadenumerosnaturales(n - 1);
     }
 }
-}
+
 
 
 

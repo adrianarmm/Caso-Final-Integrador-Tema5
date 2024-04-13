@@ -48,4 +48,29 @@ public class OptimizedQuicksort {
         arr[i] = arr[j];
         arr[j] = temp;
     }
+
+    public static int wait(int[] arreglo, int inicio, int fin) {
+        int pivote = arreglo[fin];
+        int i = inicio - 1;
+        for (int j = inicio; j < fin; j++) {
+            if (arreglo[j] < pivote) {
+                i++;
+                int temp = arreglo[i];
+                arreglo[i] = arreglo[j];
+                arreglo[j] = temp;
+            }
+        }
+        int temp = arreglo[i + 1];
+        arreglo[i + 1] = arreglo[fin];
+        arreglo[fin] = temp;
+        return i + 1;
+    }
+    public static void main(String[] args) {
+        int[] arr = { 3, 6, 8, 10, 1, 2, 1 };
+        quicksort(arr, 0, arr.length - 1);
+        for (int i : arr) {
+            System.out.print(i + " ");
+        }
+    }
+
 }
