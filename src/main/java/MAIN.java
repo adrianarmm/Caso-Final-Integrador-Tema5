@@ -203,6 +203,24 @@ public class MAIN {
     }
 
 
+    private static int partition(int[] arreglo, int inicio, int fin) {
+
+        int pivote = arreglo[fin];
+        int i = (inicio - 1); // Índice del elemento más pequeño y el indicador del lugar correcto del pivote encontrado hasta ahora
+
+        for (int j = inicio; j < fin; j++) {
+            // Si el elemento actual es menor o igual al pivote
+            if (arreglo[j] <= pivote) {
+                i++;
+
+                // Intercambiar arreglo[i] y arreglo[j]
+                int temp = arreglo[i];
+                arreglo[i] = arreglo[j];
+                arreglo[j] = temp;
+            }
+        }
+
+
     private static void ordenarLineasArchivo(String filePath) {
         try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
             List<String> lineas = new ArrayList<>();
