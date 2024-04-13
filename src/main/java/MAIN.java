@@ -45,13 +45,19 @@ public class MAIN {
         long sumatoria = Sumatoriadenumerosnaturales(n);
         System.out.println("La sumatoria de los primeros " + n + " números naturales es: " + sumatoria);
 
+
         // Demostración de quicksort
         demoQuicksort();
 
         // Ordenar líneas de un archivo de texto
         ordenarLineasArchivo(filePath);
 
+// Encontrar el valor máximo en un arreglo de enteros
+        int[] datos = {1, 2, 3, 4, 5};
+        int resultadoMaximo = Maximo.maximo(datos, datos.length - 1);
+        System.out.println("\nEl número máximo en el arreglo es: " + resultadoMaximo);
     }
+
     // Método para contar genes en una cadena de ADN
     public static int contarGenes(String cadenaADN, int posicion) {
         if (cadenaADN == null || cadenaADN.isEmpty() || posicion >= cadenaADN.length()) {
@@ -173,7 +179,21 @@ public static long Sumatoriadenumerosnaturales(int n) {
     } else {
         return n + Sumatoriadenumerosnaturales(n - 1);
     }
-}
+
+    public static int maximo(int[] datos, int indice) {
+        if (indice == 0) {
+            return datos[0];
+        } else {
+            int maximoAnterior = Maximo.maximo(datos, indice - 1);
+            return Math.max(datos[indice], maximoAnterior);
+        }
+    }
+
+    }
+
+
+
+
 }
 
 
