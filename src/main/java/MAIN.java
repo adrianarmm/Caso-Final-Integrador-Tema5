@@ -52,11 +52,14 @@ public class MAIN {
         // Ordenar líneas de un archivo de texto
         ordenarLineasArchivo(filePath);
 
-    // Encontrar el valor máximo en un arreglo de enteros
+        // Encontrar el valor máximo en un arreglo de enteros y su posición
         int[] datos = {1, 2, 3, 4, 5};
-        int resultadoMaximo = Maximo.maximo(datos, datos.length - 1);
+        int[] posiciones = new int[1]; // Arreglo para almacenar la posición del máximo
+        int resultadoMaximo = maximo(datos, datos.length - 1, posiciones);
         System.out.println("\nEl número máximo en el arreglo es: " + resultadoMaximo);
+        System.out.println("La posición del número máximo en el arreglo es: " + posiciones[0]);
     }
+}
 
     // Método para contar genes en una cadena de ADN
     public static int contarGenes(String cadenaADN, int posicion) {
@@ -183,7 +186,7 @@ public class MAIN {
         }
     }
 
-        public static int maximo( int[] datos, int indice){
+        public static int maximo(int[] datos, int indice, int[] posiciones){
             // Comprobación para manejar un arreglo vacío.
             if (datos == null || datos.length == 0) {
                 throw new IllegalArgumentException("El arreglo no debe estar vacío.");
@@ -197,7 +200,7 @@ public class MAIN {
             }
         }
 
-}
+
 
 
 
