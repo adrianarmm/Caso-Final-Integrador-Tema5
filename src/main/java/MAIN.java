@@ -186,21 +186,15 @@ public class MAIN {
             return n + Sumatoriadenumerosnaturales(n - 1);
         }
     }
-
-        public static int maximo( int[] datos, int indice){
-            // Comprobación para manejar un arreglo vacío.
-            if (datos == null || datos.length == 0) {
-                throw new IllegalArgumentException("El arreglo no debe estar vacío.");
-            }
-
-            if (indice == 0) {
-                return datos[0];
-            } else {
-                int maximoAnterior = Maximo.maximo(datos, indice - 1);
-                return Math.max(datos[indice], maximoAnterior);
-            }
+// Método para encontrar el valor máximo en un arreglo de enteros y su posición
+    public static int maximo(int[] datos, int indice) {
+        if (indice == 0) {
+            return datos[0];
+        } else {
+            int maximoAnterior = maximo(datos, indice - 1);
+            return Math.max(datos[indice], maximoAnterior);
         }
-
+    }
 }
 
 
