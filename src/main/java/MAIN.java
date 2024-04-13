@@ -219,7 +219,13 @@ public class MAIN {
                 arreglo[j] = temp;
             }
         }
+        // Intercambiar arreglo[i + 1] y arreglo[fin] (o pivote)
+        int temp = arreglo[i + 1];
+        arreglo[i + 1] = arreglo[fin];
+        arreglo[fin] = temp;
 
+        return i + 1;
+    }
 
     private static void ordenarLineasArchivo(String filePath) {
         try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
