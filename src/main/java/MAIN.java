@@ -39,56 +39,8 @@ public class MAIN {
         listar(inicio, fin);
     }
 
-    // Ordenar líneas de un archivo de texto
-    ordenarLineasArchivo(filePath) {
-        try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
-            String linea;
-            ArrayList<String> lineas = new ArrayList<>();
-            while ((linea = br.readLine()) != null) {
-                lineas.add(linea);
-            }
-            Collections.sort(lineas);
-            System.out.println("\nLíneas ordenadas del archivo:");
-            for (String s : lineas) {
-                System.out.println(s);
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-    }
-}
-
-    // Demostración del quicksort
-    demoQuicksort();
-
-}
 
 
-// Método para realizar la partición del arreglo (parte del quicksort)
-public static int partition(int[] arreglo, int inicio, int fin) {
-    int pivote = arreglo[fin];
-    int i = (inicio - 1);
-    for (int j = inicio; j < fin; j++) {
-        if (arreglo[j] <= pivote) {
-            i++;
-            int temp = arreglo[i];
-            arreglo[i] = arreglo[j];
-            arreglo[j] = temp;
-        }
-    }
-    int temp = arreglo[i + 1];
-    arreglo[i + 1] = arreglo[fin];
-    arreglo[fin] = temp;
-    return i + 1;
-}
-
-
-public static void quicksort(int[] arreglo, int inicio, int fin) {
-    if (inicio < fin) {
-        int indiceParticion = OptimizedQuicksort.partition(arreglo, inicio, fin);
-        quicksort(arreglo, inicio, indiceParticion - 1);
-        quicksort(arreglo, indiceParticion + 1, fin);
-    }
-}
 
     // Método para contar genes en una cadena de ADN
     public static int contarGenes(String cadenaADN, int posicion) {
@@ -180,6 +132,7 @@ public static void quicksort(int[] arreglo, int inicio, int fin) {
 
 }
 
+
 public static int wait(int[] arreglo, int inicio, int fin) {
         int pivote = arreglo[fin];
         int i = inicio - 1;
@@ -200,7 +153,7 @@ public static int wait(int[] arreglo, int inicio, int fin) {
 
 public static void quicksort(int[] arreglo, int inicio, int fin) {
     if (inicio < fin) {
-        int indiceParticion = partition(arreglo, inicio, fin);
+        int indiceParticion = OptimizedQuicksort.partition(arreglo, inicio, fin);
         quicksort(arreglo, inicio, indiceParticion - 1);
         quicksort(arreglo, indiceParticion + 1, fin);
     }
@@ -229,8 +182,7 @@ public static void ordenarLineasArchivo(String filePath) {
                 }
             }
         }
-    }
-}
+
 
 
 
