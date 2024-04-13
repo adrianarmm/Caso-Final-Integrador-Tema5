@@ -152,8 +152,36 @@ public class MAIN {
     }
 
     private static void buscarEnArchivoDemo() {
-        // Esta es una función de marcador de posición. Deberías reemplazarla con tu implementación real.
-        System.out.println("Función de búsqueda binaria en archivo no implementada.");
+        private static void buscarEnArchivoDemo() {
+            // Define la ruta del archivo y la palabra a buscar
+            String filePath = "/Users/adrianareyesmorera/Desktop/CASO5.txt"; // Asegúrate de reemplazar esto con la ruta real de tu archivo
+            String palabraBuscada = "ADN"; // Ajusta esto a la palabra que quieres buscar
+
+            // Leer el archivo y almacenar las líneas en un ArrayList
+            List<String> lineas = new ArrayList<>();
+            try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
+                String linea;
+                while ((linea = br.readLine()) != null) {
+                    lineas.add(linea);
+                }
+            } catch (IOException e) {
+                System.out.println("Ocurrió un error al leer el archivo: " + e.getMessage());
+                return;
+            }
+
+            // Convertir el ArrayList a un arreglo para usar la búsqueda binaria
+            String[] arregloLineas = lineas.toArray(new String[0]);
+
+            // Realizar la búsqueda binaria
+            int resultado = Arrays.binarySearch(arregloLineas, palabraBuscada);
+
+            // Mostrar el resultado
+            if (resultado >= 0) {
+                System.out.println("La palabra '" + palabraBuscada + "' se encontró en la línea " + (resultado + 1));
+            } else {
+                System.out.println("La palabra '" + palabraBuscada + "' no se encontró en el archivo.");
+            }
+        }
     }
 
     private static void listarNumerosEnRangoDemo() {
