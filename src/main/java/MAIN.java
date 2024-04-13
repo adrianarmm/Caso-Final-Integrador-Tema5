@@ -168,30 +168,21 @@ public static int partition(int[] arreglo, int inicio, int fin) {
 
 }
     public static void demoQuicksort() {
-    int[] arreglo = {5, 2, 9, 1, 5, 6};
-    System.out.println("\nArreglo original: " + Arrays.toString(arreglo));
-    quicksort(arreglo, 0, arreglo.length - 1);
-    System.out.println("Arreglo ordenado: " + Arrays.toString(arreglo));
 }
 
 public static void ordenarLineasArchivo(String filePath) {
-    try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
-        String linea;
-        ArrayList<String> lineas = new ArrayList<>();
-        while ((linea = br.readLine()) != null) {
-            lineas.add(linea);
-        }
-        Collections.sort(lineas);
-        System.out.println("\nLíneas ordenadas del archivo:");
-        for (String s : lineas) {
-            System.out.println(s);
-        }
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
+}
+// Nuevo método añadido para calcular la sumatoria de números naturales de manera recursiva
+public static long Sumatoriadenumerosnaturales(int n) {
+    if (n <= 0) {
+        return 0;
+    } else if (n == 1) {
+        return 1;
+    } else {
+        return n + Sumatoriadenumerosnaturales(n - 1);
     }
+}
+}
 
 
 
