@@ -160,17 +160,16 @@ public static int wait(int[] arreglo, int inicio, int fin) {
         return i + 1;
     }
 
-
-public static void quicksort(int[] arreglo, int inicio, int fin) {
-    if (inicio < fin) {
-        int indiceParticion = OptimizedQuicksort.partition(arreglo, inicio, fin);
-        quicksort(arreglo, inicio, indiceParticion - 1);
-        quicksort(arreglo, indiceParticion + 1, fin);
+    public static void quicksort(int[] arreglo, int inicio, int fin) {
+        if (inicio < fin) {
+            int indiceParticion = partition(arreglo, inicio, fin);
+            quicksort(arreglo, inicio, indiceParticion - 1);
+            quicksort(arreglo, indiceParticion + 1, fin);
+        }
     }
-}
+
 
 public static int partition(int[] arreglo, int inicio, int fin) {
-
     return OptimizedQuicksort.wait(arreglo, inicio, fin);
 
 }
@@ -189,8 +188,7 @@ public static long Sumatoriadenumerosnaturales(int n) {
         return n + Sumatoriadenumerosnaturales(n - 1);
     }
 }
-
-    }
+}
 
 
 
