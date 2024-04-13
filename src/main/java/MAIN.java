@@ -4,108 +4,81 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 import java.util.Scanner;
-import java.util.*;
 
 public class MAIN {
 
     public static void main(String[] args) {
-        // Conteo de genes en una cadena de ADN
-        System.out.println("Conteo de Genes");
-        String cadenaADN = "ATGCGTAGATGCGATAG";
-        int numeroGenes = contarGenes(cadenaADN, 0);
-        System.out.println("El número de genes en la cadena de ADN es: " + numeroGenes);
+        Scanner scanner = new Scanner(System.in);
 
-        // Cálculo de combinaciones genéticas
-        System.out.println("Combinaciones Genéticas");
-        int numeroGenes2 = 2;
-        int numeroAlelos = 4;
-        int combinacionesGeneticas = combinacionesGeneticas(numeroGenes2, numeroAlelos);
-        System.out.println("El número de combinaciones genéticas posibles es: " + combinacionesGeneticas);
+        while (true) {
+            System.out.println("\nSoftware de Análisis Genómico y Organización de Datos:");
+            System.out.println("1. Conteo de Genes");
+            System.out.println("2. Cálculo de Combinaciones Genéticas");
+            System.out.println("3. Gestión de Fechas");
+            System.out.println("4. Búsqueda Binaria en Archivo");
+            System.out.println("5. Listado de Números en un Rango");
+            System.out.println("6. Sumatoria de Números Naturales");
+            System.out.println("7. Demostración de Quicksort");
+            System.out.println("8. Ordenar Líneas de un Archivo de Texto");
+            System.out.println("9. Encontrar el Valor Máximo y su Posición en un Arreglo");
+            System.out.println("10. Salir");
+            System.out.print("Seleccione una opción: ");
+            int opcion = scanner.nextInt();
 
-        // Gestión de fechas
-        gestionarFechas();
-
-        // Búsqueda binaria en un archivo de texto
-        System.out.println("Búsqueda Binaria");
-        String filePath = "/Users/adrianareyesmorera/Desktop/CASO5.txt"; // Asegúrate de que la ruta del archivo sea correcta
-        String palabraBuscada = "ADN";
-        busquedaBinaria(filePath, palabraBuscada);
-
-        // Listado de números en un rango dado
-        System.out.println("Listado de números en un rango");
-        int inicio = 1;
-        int fin = 10;
-        System.out.print("Los números en el rango de " + inicio + " a " + fin + " son: ");
-        listar(inicio, fin);
-
-
-        // Sumatoria de números naturales
-        System.out.println("Sumatoria de números naturales");
-        int n = 5;
-        long sumatoria = Sumatoriadenumerosnaturales(n);
-        System.out.println("La sumatoria de los primeros " + n + " números naturales es: " + sumatoria);
-
-
-        // Demostración de quicksort
-        demoQuicksort();
-
-        // Ordenar líneas de un archivo de texto
-        ordenarLineasArchivo(filePath);
-
-    // Encontrar el valor máximo en un arreglo de enteros y su posicion
-        int[] datos = {1, 2, 3, 4, 5};
-        int[] posiciones = {0};
-        int indice = datos.length - 1;
-        int resultado = maximo(datos, indice);
-        System.out.println("El número máximo en el arreglo es: " + resultado);
-        System.out.println("La posición del número máximo en el arreglo es: " + posiciones[0]);
-
-    }
-
-    // Método para contar genes en una cadena de ADN
-    public static int contarGenes(String cadenaADN, int posicion) {
-        if (cadenaADN == null || cadenaADN.isEmpty() || posicion >= cadenaADN.length()) {
-            return 0;
-        }
-        int inicioGen = cadenaADN.indexOf("ATG", posicion);
-        if (inicioGen == -1) {
-            return 0;
-        }
-        int finGenTGA = cadenaADN.indexOf("TGA", inicioGen + 3);
-        int finGenTAG = cadenaADN.indexOf("TAG", inicioGen + 3);
-        int finGen = Math.min(finGenTGA != -1 ? finGenTGA + 3 : Integer.MAX_VALUE,
-                finGenTAG != -1 ? finGenTAG + 3 : Integer.MAX_VALUE);
-        if (finGen == Integer.MAX_VALUE) {
-            return 0;
-        }
-        return 1 + contarGenes(cadenaADN, finGen);
-    }
-
-    // Método para calcular combinaciones genéticas
-    public static int combinacionesGeneticas(int numeroGenes, int numeroAlelos) {
-        if (numeroGenes <= 0) {
-            return 0;
-        }
-        if (numeroGenes == 1) {
-            return numeroAlelos;
-        }
-        return numeroAlelos * combinacionesGeneticas(numeroGenes - 1, numeroAlelos);
-    }
-
-    // Método para listar números en un rango
-    public static void listar(int inicio, int fin) {
-        if (inicio <= fin) {
-            System.out.print(inicio + " ");
-            listar(inicio + 1, fin);
-        } else {
-            System.out.println();
+            switch (opcion) {
+                case 1:
+                    contarGenesDemo();
+                    break;
+                case 2:
+                    calcularCombinacionesGeneticasDemo();
+                    break;
+                case 3:
+                    gestionarFechas();
+                    break;
+                case 4:
+                    buscarEnArchivoDemo();
+                    break;
+                case 5:
+                    listarNumerosEnRangoDemo();
+                    break;
+                case 6:
+                    sumatoriaNumerosNaturalesDemo();
+                    break;
+                case 7:
+                    demoQuicksort();
+                    break;
+                case 8:
+                    ordenarLineasArchivo("/Users/adrianareyesmorera/Desktop/CASO5.txt");
+                    break;
+                case 9:
+                    encontrarMaximoYPosicionDemo();
+                    break;
+                case 10:
+                    System.out.println("Saliendo...");
+                    System.exit(0);
+                    break;
+                default:
+                    System.out.println("Opción no válida, por favor intente de nuevo.");
+            }
         }
     }
 
-    // Método para gestionar la entrada de fechas por parte del usuario
-    public static void gestionarFechas() {
-        System.out.println("Gestión de Fechas (escribe 'fin' para continuar con el programa)");
+    private static void contarGenesDemo() {
+        // Esta es una función de marcador de posición. Deberías reemplazarla con tu implementación real.
+        System.out.println("Función de conteo de genes no implementada.");
+    }
+
+    private static void calcularCombinacionesGeneticasDemo() {
+        // Esta es una función de marcador de posición. Deberías reemplazarla con tu implementación real.
+        System.out.println("Función de cálculo de combinaciones genéticas no implementada.");
+    }
+
+    private static void gestionarFechas() {
         Scanner scanner = new Scanner(System.in);
         List<LocalDate> fechas = new ArrayList<>();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
@@ -129,78 +102,83 @@ public class MAIN {
         }
     }
 
-    // Método para realizar una búsqueda binaria en un archivo de texto
-    public static int busquedaBinaria(String filePath, String targetWord) {
-        try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
-            String linea;
-            List<String> listaLineas = new ArrayList<>();
-            while ((linea = br.readLine()) != null) {
-                listaLineas.add(linea);
-            }
-            String[] lineas = listaLineas.toArray(new String[0]);
-            Arrays.sort(lineas);
-            int posicion = Arrays.binarySearch(lineas, targetWord);
-            if (posicion >= 0) {
-                System.out.println("La palabra '" + targetWord + "' se encuentra en la posición " + posicion);
-            } else {
-                System.out.println("La palabra '" + targetWord + "' no se encuentra en el archivo");
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
+    private static void buscarEnArchivoDemo() {
+        // Esta es una función de marcador de posición. Deberías reemplazarla con tu implementación real.
+        System.out.println("Función de búsqueda binaria en archivo no implementada.");
+    }
+
+    private static void listarNumerosEnRangoDemo() {
+        // Ejemplo de listar números en un rango
+        int inicio = 1, fin = 10;
+        System.out.print("Listado de números del " + inicio + " al " + fin + ": ");
+        for (int i = inicio; i <= fin; i++) {
+            System.out.print(i + " ");
         }
-
-        return -1;
-
+        System.out.println();
     }
 
-    public static void quicksort(int[] arreglo, int inicio, int fin) {
-        if (inicio < fin) {
-            int indiceParticion = partition(arreglo, inicio, fin);
-            quicksort(arreglo, inicio, indiceParticion - 1);
-            quicksort(arreglo, indiceParticion + 1, fin);
-        }
+    private static void sumatoriaNumerosNaturalesDemo() {
+        // Ejemplo de cálculo de la sumatoria de números naturales
+        int n = 5;
+        long sumatoria = sumatoriaDeNumerosNaturales(n);
+        System.out.println("La sumatoria de los primeros " + n + " números naturales es: " + sumatoria);
     }
 
-    public static void demoQuicksort() {
-        int[] arreglo = {5, 2, 9, 1, 5, 6};
-        System.out.println("\nArreglo original: " + Arrays.toString(arreglo));
-        quicksort(arreglo, 0, arreglo.length - 1);
-        System.out.println("Arreglo ordenado: " + Arrays.toString(arreglo));
-    }
-
-    public static int partition(int[] arreglo, int inicio, int fin) {
-        return OptimizedQuicksort.wait(arreglo, inicio, fin);
-
-    }
-
-
-    public static void ordenarLineasArchivo(String filePath) {
-    }
-
-    // Nuevo método añadido para calcular la sumatoria de números naturales de manera recursiva
-    public static long Sumatoriadenumerosnaturales(int n) {
+    private static long sumatoriaDeNumerosNaturales(int n) {
         if (n <= 0) {
             return 0;
         } else if (n == 1) {
             return 1;
         } else {
-            return n + Sumatoriadenumerosnaturales(n - 1);
+            return n + sumatoriaDeNumerosNaturales(n - 1);
         }
     }
-// Método para encontrar el valor máximo en un arreglo de enteros y su posición
-    public static int maximo(int[] datos, int indice) {
+
+    private static void demoQuicksort() {
+        // Esta es una función de marcador de posición. Deberías reemplazarla con tu implementación real de quicksort.
+        System.out.println("Demostración de Quicksort no implementada.");
+    }
+
+    private static void ordenarLineasArchivo(String filePath) {
+        try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
+            List<String> lineas = new ArrayList<>();
+            String linea;
+            while ((linea = br.readLine()) != null) {
+                lineas.add(linea);
+            }
+            Collections.sort(lineas);
+            System.out.println("Líneas ordenadas del archivo:");
+            for (String s : lineas) {
+                System.out.println(s);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private static void encontrarMaximoYPosicionDemo() {
+        int[] datos = {1, 2, 3, 4, 5, 6, 2, 1};
+        int[] posiciones = new int[1]; // Arreglo para almacenar la posición del máximo
+        int resultadoMaximo = maximo(datos, datos.length - 1, posiciones);
+        System.out.println("El número máximo en el arreglo es: " + resultadoMaximo);
+        System.out.println("La posición del número máximo en el arreglo es: " + posiciones[0]);
+    }
+
+    private static int maximo(int[] datos, int indice, int[] posiciones) {
         if (indice == 0) {
+            posiciones[0] = 0;
             return datos[0];
         } else {
-            int maximoAnterior = maximo(datos, indice - 1);
-            return Math.max(datos[indice], maximoAnterior);
+            int maximoAnterior = maximo(datos, indice - 1, posiciones);
+            if (datos[indice] > maximoAnterior) {
+                posiciones[0] = indice;
+                return datos[indice];
+            } else {
+                return maximoAnterior;
+            }
         }
     }
 }
-
-
-
-
 
 
 
