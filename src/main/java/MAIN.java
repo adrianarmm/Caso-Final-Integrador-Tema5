@@ -142,24 +142,6 @@ public class MAIN {
 
 }
 
-
-public static int wait(int[] arreglo, int inicio, int fin) {
-        int pivote = arreglo[fin];
-        int i = inicio - 1;
-        for (int j = inicio; j < fin; j++) {
-            if (arreglo[j] < pivote) {
-                i++;
-                int temp = arreglo[i];
-                arreglo[i] = arreglo[j];
-                arreglo[j] = temp;
-            }
-        }
-        int temp = arreglo[i + 1];
-        arreglo[i + 1] = arreglo[fin];
-        arreglo[fin] = temp;
-        return i + 1;
-    }
-
     public static void quicksort(int[] arreglo, int inicio, int fin) {
         if (inicio < fin) {
             int indiceParticion = partition(arreglo, inicio, fin);
@@ -167,14 +149,18 @@ public static int wait(int[] arreglo, int inicio, int fin) {
             quicksort(arreglo, indiceParticion + 1, fin);
         }
     }
-
+    public static void demoQuicksort() {
+        int[] arreglo = {5, 2, 9, 1, 5, 6};
+        System.out.println("\nArreglo original: " + Arrays.toString(arreglo));
+        quicksort(arreglo, 0, arreglo.length - 1);
+        System.out.println("Arreglo ordenado: " + Arrays.toString(arreglo));
+    }
 
 public static int partition(int[] arreglo, int inicio, int fin) {
     return OptimizedQuicksort.wait(arreglo, inicio, fin);
 
 }
-    public static void demoQuicksort() {
-}
+
 
 public static void ordenarLineasArchivo(String filePath) {
 }
