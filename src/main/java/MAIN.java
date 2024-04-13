@@ -40,7 +40,10 @@ public class MAIN {
     }
 
 
-
+    // Sumatoria de números naturales
+    int n = 5;
+        System.out.println("Sumatoria de los primeros " + n + " números naturales es: " + Sumatoriadenumerosnaturales(n));
+}
 
     // Método para contar genes en una cadena de ADN
     public static int contarGenes(String cadenaADN, int posicion) {
@@ -158,6 +161,12 @@ public static void quicksort(int[] arreglo, int inicio, int fin) {
         quicksort(arreglo, indiceParticion + 1, fin);
     }
 }
+
+public static int partition(int[] arreglo, int inicio, int fin) {
+
+    return OptimizedQuicksort.wait(arreglo, inicio, fin);
+
+}
     public static void demoQuicksort() {
     int[] arreglo = {5, 2, 9, 1, 5, 6};
     System.out.println("\nArreglo original: " + Arrays.toString(arreglo));
@@ -182,6 +191,7 @@ public static void ordenarLineasArchivo(String filePath) {
                 }
             }
         }
+    }
 
 
 
