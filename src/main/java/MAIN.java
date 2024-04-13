@@ -191,6 +191,16 @@ public class MAIN {
 
         System.out.println("Arreglo ordenado mediante Quicksort: " + Arrays.toString(arreglo));
     }
+    private static void quicksort(int[] arreglo, int inicio, int fin) {
+        if (inicio < fin) {
+            // partition() devuelve el índice del pivote correctamente colocado
+            int indiceParticion = partition(arreglo, inicio, fin);
+
+            // Ordena recursivamente los elementos antes y después de la partición
+            quicksort(arreglo, inicio, indiceParticion - 1);
+            quicksort(arreglo, indiceParticion + 1, fin);
+        }
+    }
 
 
     private static void ordenarLineasArchivo(String filePath) {
