@@ -52,7 +52,7 @@ public class MAIN {
         // Ordenar líneas de un archivo de texto
         ordenarLineasArchivo(filePath);
 
-// Encontrar el valor máximo en un arreglo de enteros
+    // Encontrar el valor máximo en un arreglo de enteros
         int[] datos = {1, 2, 3, 4, 5};
         int resultadoMaximo = Maximo.maximo(datos, datos.length - 1);
         System.out.println("\nEl número máximo en el arreglo es: " + resultadoMaximo);
@@ -146,7 +146,7 @@ public class MAIN {
 
         return -1;
 
-}
+    }
 
     public static void quicksort(int[] arreglo, int inicio, int fin) {
         if (inicio < fin) {
@@ -155,6 +155,7 @@ public class MAIN {
             quicksort(arreglo, indiceParticion + 1, fin);
         }
     }
+
     public static void demoQuicksort() {
         int[] arreglo = {5, 2, 9, 1, 5, 6};
         System.out.println("\nArreglo original: " + Arrays.toString(arreglo));
@@ -162,34 +163,37 @@ public class MAIN {
         System.out.println("Arreglo ordenado: " + Arrays.toString(arreglo));
     }
 
-public static int partition(int[] arreglo, int inicio, int fin) {
-    return OptimizedQuicksort.wait(arreglo, inicio, fin);
+    public static int partition(int[] arreglo, int inicio, int fin) {
+        return OptimizedQuicksort.wait(arreglo, inicio, fin);
 
-}
-
-
-public static void ordenarLineasArchivo(String filePath) {
-}
-// Nuevo método añadido para calcular la sumatoria de números naturales de manera recursiva
-public static long Sumatoriadenumerosnaturales(int n) {
-    if (n <= 0) {
-        return 0;
-    } else if (n == 1) {
-        return 1;
-    } else {
-        return n + Sumatoriadenumerosnaturales(n - 1);
     }
 
-    public static int maximo(int[] datos, int indice) {
-        if (indice == 0) {
-            return datos[0];
+
+    public static void ordenarLineasArchivo(String filePath) {
+    }
+
+    // Nuevo método añadido para calcular la sumatoria de números naturales de manera recursiva
+    public static long Sumatoriadenumerosnaturales(int n) {
+        if (n <= 0) {
+            return 0;
+        } else if (n == 1) {
+            return 1;
         } else {
-            int maximoAnterior = Maximo.maximo(datos, indice - 1);
-            return Math.max(datos[indice], maximoAnterior);
+            return n + Sumatoriadenumerosnaturales(n - 1);
         }
-    }
+
+        public static int maximo( int[] datos, int indice){
+            if (indice == 0) {
+                return datos[0];
+            } else {
+                int maximoAnterior = maximo(datos, indice - 1);
+                return Math.max(datos[indice], maximoAnterior);
+            }
+        }
 
     }
+}
+
 
 
 
