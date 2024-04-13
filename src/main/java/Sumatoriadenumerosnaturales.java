@@ -9,8 +9,3 @@ public class Sumatoriadenumerosnaturales {
         }
     }
 }
-public static void main(String[] args) {
-    int n = 5;
-    long resultado = (n);
-    System.out.println("La sumatoria de los primeros " + n + " números naturales es: " + resultado);
-}
