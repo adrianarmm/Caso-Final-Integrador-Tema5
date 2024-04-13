@@ -39,11 +39,12 @@ public class MAIN {
         listar(inicio, fin);
     }
 
-
     // Sumatoria de números naturales
+          System.out.println("Sumatoria de Números Naturales");
     int n = 5;
-        System.out.println("Sumatoria de los primeros " + n + " números naturales es: " + Sumatoriadenumerosnaturales(n));
-}
+    long sumatoria = Sumatoriadenumerosnaturales(n);
+            System.out.println("La sumatoria de los primeros "+n +" números naturales es: "+sumatoria);
+    }
 
     // Método para contar genes en una cadena de ADN
     public static int contarGenes(String cadenaADN, int posicion) {
@@ -182,6 +183,8 @@ public static long Sumatoriadenumerosnaturales(int n) {
         return n + Sumatoriadenumerosnaturales(n - 1);
     }
 }
+
+    }
 
 
 
