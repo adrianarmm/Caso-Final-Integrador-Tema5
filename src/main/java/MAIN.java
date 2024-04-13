@@ -45,6 +45,12 @@ public class MAIN {
         long sumatoria = Sumatoriadenumerosnaturales(n);
         System.out.println("La sumatoria de los primeros " + n + " números naturales es: " + sumatoria);
 
+        // Demostración de quicksort
+        demoQuicksort();
+
+        // Ordenar líneas de un archivo de texto
+        ordenarLineasArchivo(filePath);
+
     }
     // Método para contar genes en una cadena de ADN
     public static int contarGenes(String cadenaADN, int posicion) {
