@@ -37,15 +37,15 @@ public class MAIN {
         int fin = 10;
         System.out.print("Los números en el rango de " + inicio + " a " + fin + " son: ");
         listar(inicio, fin);
-    }
 
-    // Sumatoria de números naturales
-          System.out.println("Sumatoria de Números Naturales");
-    int n = 5;
-    long sumatoria = Sumatoriadenumerosnaturales(n);
-            System.out.println("La sumatoria de los primeros "+n +" números naturales es: "+sumatoria);
-    }
 
+        // Sumatoria de números naturales
+        System.out.println("Sumatoria de números naturales");
+        int n = 5;
+        long sumatoria = Sumatoriadenumerosnaturales(n);
+        System.out.println("La sumatoria de los primeros " + n + " números naturales es: " + sumatoria);
+
+    }
     // Método para contar genes en una cadena de ADN
     public static int contarGenes(String cadenaADN, int posicion) {
         if (cadenaADN == null || cadenaADN.isEmpty() || posicion >= cadenaADN.length()) {
