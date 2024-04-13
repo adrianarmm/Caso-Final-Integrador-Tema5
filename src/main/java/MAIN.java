@@ -184,9 +184,14 @@ public class MAIN {
     }
 
     private static void demoQuicksort() {
-        // Esta es una función de marcador de posición. Deberías reemplazarla con tu implementación real de quicksort.
-        System.out.println("Demostración de Quicksort no implementada.");
+        int[] arreglo = {10, 7, 8, 9, 1, 5};
+        System.out.println("Arreglo original: " + Arrays.toString(arreglo));
+
+        quicksort(arreglo, 0, arreglo.length - 1);
+
+        System.out.println("Arreglo ordenado mediante Quicksort: " + Arrays.toString(arreglo));
     }
+
 
     private static void ordenarLineasArchivo(String filePath) {
         try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
