@@ -152,7 +152,7 @@ public class MAIN {
     }
 
     private static void buscarEnArchivoDemo() {
-        private static void buscarEnArchivoDemo() {
+
             // Define la ruta del archivo y la palabra a buscar
             String filePath = "/Users/adrianareyesmorera/Desktop/CASO5.txt"; // Asegúrate de reemplazar esto con la ruta real de tu archivo
             String palabraBuscada = "ADN"; // Ajusta esto a la palabra que quieres buscar
@@ -182,7 +182,8 @@ public class MAIN {
                 System.out.println("La palabra '" + palabraBuscada + "' no se encontró en el archivo.");
             }
         }
-    }
+
+
 
     private static void listarNumerosEnRangoDemo() {
         // Ejemplo de listar números en un rango
