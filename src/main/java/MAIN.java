@@ -181,6 +181,7 @@ public class MAIN {
         } else {
             return n + Sumatoriadenumerosnaturales(n - 1);
         }
+    }
 
         public static int maximo( int[] datos, int indice){
             // Comprobación para manejar un arreglo vacío.
@@ -196,7 +197,6 @@ public class MAIN {
             }
         }
 
-    }
 }
 
 
