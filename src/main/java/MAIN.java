@@ -69,9 +69,48 @@ public class MAIN {
     }
 
     private static void contarGenesDemo() {
-        // Esta es una función de marcador de posición. Deberías reemplazarla con tu implementación real.
-        System.out.println("Función de conteo de genes no implementada.");
+        String cadenaADN = "ATGCGTAGATGCGATAG"; // Ejemplo de cadena de ADN
+        int numeroGenes = contarGenes(cadenaADN);
+        System.out.println("El número de genes en la cadena de ADN es: " + numeroGenes);
     }
+
+    private static int contarGenes(String cadenaADN) {
+        int contadorGenes = 0;
+        int inicio = 0;
+
+        while (true) {
+            int locInicio = cadenaADN.indexOf("ATG", inicio);
+            if (locInicio == -1) {
+                // No se encuentra más "ATG"
+                break;
+            }
+            int locFin = encontrarFinGen(cadenaADN, locInicio + 3);
+            if (locFin != -1) {
+                contadorGenes++;
+                inicio = locFin + 3;
+            } else {
+                // No se encontró una secuencia de parada válida después de este "ATG"
+                inicio = locInicio + 3;
+            }
+        }
+
+        return contadorGenes;
+    }
+
+    private static int encontrarFinGen(String cadenaADN, int inicio) {
+        int locTAA = cadenaADN.indexOf("TAA", inicio);
+        int locTAG = cadenaADN.indexOf("TAG", inicio);
+        int locTGA = cadenaADN.indexOf("TGA", inicio);
+
+
+        // Encuentra el índice más cercano
+        int minLoc = Math.min(locTAA != -1 ? locTAA : cadenaADN.length(),
+                Math.min(locTAG != -1 ? locTAG : cadenaADN.length(),
+                        locTGA != -1 ? locTGA : cadenaADN.length()));
+
+        return (minLoc == cadenaADN.length()) ? -1 : minLoc;
+    }
+
 
     private static void calcularCombinacionesGeneticasDemo() {
         // Esta es una función de marcador de posición. Deberías reemplazarla con tu implementación real.
