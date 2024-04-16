@@ -1,8 +1,6 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
-import java.io.BufferedReader;
-import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -247,7 +245,7 @@ public class MAIN extends JFrame {
                     for (int i = inicio; i <= fin; i++) {
                         numeros.append(i).append(" ");
                     }
-                    JOptionPane.showMessageDialog(this, "Números en el rango: " + numeros.toString());
+                    JOptionPane.showMessageDialog(this, "Números en el rango: " + numeros);
                 } catch (NumberFormatException e) {
                     JOptionPane.showMessageDialog(this, "Por favor, introduzca números válidos.");
                 }
