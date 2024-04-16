@@ -73,11 +73,6 @@ public class MAIN extends JFrame {
         btnAsistente.addActionListener(e -> abrirAsistenteVirtual());
         panel.add(btnAsistente);
 
-        JButton btnSonido = new JButton("Reproducir Sonido");
-        btnSonido.addActionListener(e -> reproducirSonido("/Users/adrianareyesmorera/Desktop/menu-button-pack-190040.wav"));
-        panel.add(btnSonido);
-
-
         setVisible(true);
     }
 
@@ -115,16 +110,6 @@ public class MAIN extends JFrame {
 
         juegoFrame.add(panel);
         juegoFrame.setVisible(true);
-    }
-
-    private void reproducirSonido(String rutaSonido) {
-        try {
-            Clip clip = AudioSystem.getClip();
-            clip.open(AudioSystem.getAudioInputStream(new File(rutaSonido)));
-            clip.start();
-        } catch (Exception e) {
-            System.err.println("Error al reproducir el sonido: " + e.getMessage());
-        }
     }
 
     private void abrirAsistenteVirtual() {
