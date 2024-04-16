@@ -156,6 +156,10 @@ public class MAIN extends JFrame {
         }
     }
 
+    private int calcularCombinacionesGeneticas(int numeroGenes, int numeroAlelos) {
+        return (int) Math.pow(numeroAlelos, numeroGenes);
+    }
+
     private void gestionarFechasDemo() {
         // Implementación similar a la original, pero usando JOptionPane en lugar de System.out
         JOptionPane.showMessageDialog(this, "Función 'Gestión de Fechas' seleccionada.");
