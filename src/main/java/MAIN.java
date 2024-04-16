@@ -59,53 +59,9 @@ public class MAIN extends JFrame {
         add(panel);
 
 
-        JButton btnConfiguracion = new JButton("Configuración");
-        btnConfiguracion.addActionListener(e -> abrirDialogoConfiguracion());
-        panel.add(btnConfiguracion);
-
         setVisible(true);
     }
 
-
-    private void abrirDialogoConfiguracion() {
-        JDialog dialogoConfiguracion = new JDialog(this, "Configuración", true);
-        dialogoConfiguracion.setLayout(new FlowLayout());
-        dialogoConfiguracion.setSize(300, 200);
-        dialogoConfiguracion.setLocationRelativeTo(this);
-
-        JComboBox<String> comboColores = new JComboBox<>(new String[]{"Azul", "Verde", "Rojo"});
-        dialogoConfiguracion.add(comboColores);
-
-        JButton btnAplicar = new JButton("Aplicar");
-        btnAplicar.addActionListener(e -> {
-            String colorSeleccionado = (String) comboColores.getSelectedItem();
-            aplicarTemaDeColor(colorSeleccionado);
-            dialogoConfiguracion.dispose();
-        });
-        dialogoConfiguracion.add(btnAplicar);
-
-        dialogoConfiguracion.setVisible(true);
-    }
-
-    private void aplicarTemaDeColor(String colorSeleccionado) {
-        Color colorFondo;
-        switch (colorSeleccionado) {
-            case "Azul":
-                colorFondo = Color.BLUE;
-                break;
-            case "Verde":
-                colorFondo = Color.GREEN;
-                break;
-            case "Rojo":
-                colorFondo = Color.RED;
-                break;
-            default:
-                colorFondo = this.getContentPane().getBackground();
-                break;
-        }
-        this.getContentPane().setBackground(colorFondo);
-        this.getContentPane().repaint();  // Asegura que el cambio de color se aplique inmediatamente
-    }
 
 
 
