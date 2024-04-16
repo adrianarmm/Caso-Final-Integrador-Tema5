@@ -61,12 +61,111 @@ public class MAIN extends JFrame {
         JOptionPane.showMessageDialog(this, "El número de componentes en el contenedor es: " + count);
     }
 
+    public void BusquedaBinaria() {
+        int count = getContentPane().getComponentCount();
+        JOptionPane.showMessageDialog(this, "El número de componentes en el contenedor es: " + count);
+    }
 
-    // Aquí deberías implementar los métodos de tu aplicación, por ejemplo:
+    public void MaximoPosicion() {
+        int count = getContentPane().getComponentCount();
+        JOptionPane.showMessageDialog(this, "El número de componentes en el contenedor es: " + count);
+    }
+
+    public void Maximo() {
+        int count = getContentPane().getComponentCount();
+        JOptionPane.showMessageDialog(this, "El número de componentes en el contenedor es: " + count);
+    }
+
+    public void OptimizedQuickSort() {
+        int count = getContentPane().getComponentCount();
+        JOptionPane.showMessageDialog(this, "El número de componentes en el contenedor es: " + count);
+    }
+
+    public void OrdenarLineas() {
+        int count = getContentPane().getComponentCount();
+        JOptionPane.showMessageDialog(this, "El número de componentes en el contenedor es: " + count);
+    }
+
+    public void Potencias() {
+        int count = getContentPane().getComponentCount();
+        JOptionPane.showMessageDialog(this, "El número de componentes en el contenedor es: " + count);
+    }
+
+    public void SumatoriadeNumerosNaturales() {
+        int count = getContentPane().getComponentCount();
+        JOptionPane.showMessageDialog(this, "El número de componentes en el contenedor es: " + count);
+    }
+
+    public void Listadodenumerosenunrango() {
+        int count = getContentPane().getComponentCount();
+        JOptionPane.showMessageDialog(this, "El número de componentes en el contenedor es: " + count);
+    }
+
+
+
+
+
     private int contarGenes(String cadenaADN) {
         // Tu lógica de contar genes aquí...
+
+
         return 0; // Esto es solo un placeholder
     }
+
+    private int CombinacionesGeneticas(int numeroGenes, int numeroAlelos) {
+        // Tu lógica de combinaciones genéticas aquí...
+
+        return 0; // Esto es solo un placeholder
+    }
+
+    private int BusquedaBinaria(int[] datos, int dato) {
+        // Tu lógica de búsqueda binaria aquí...
+
+        return 0; // Esto es solo un placeholder
+    }
+
+    private int MaximoPosicion(int[] datos, int indice, int[] posiciones) {
+        // Tu lógica de búsqueda del máximo y su posición aquí...
+
+        return 0; // Esto es solo un placeholder
+    }
+
+    private int Maximo(int[] datos, int indice) {
+        // Tu lógica de búsqueda del máximo aquí...
+
+        return 0; // Esto es solo un placeholder
+    }
+
+    private int OptimizedQuickSort(int[] datos, int inicio, int fin) {
+        // Tu lógica de ordenamiento QuickSort aquí...
+
+        return 0; // Esto es solo un placeholder
+    }
+
+    private int OrdenarLineas(String[] lineas) {
+        // Tu lógica de ordenamiento de líneas aquí...
+
+        return 0; // Esto es solo un placeholder
+    }
+
+    private int Potencias(int base, int exponente) {
+        // Tu lógica de cálculo de potencias aquí...
+
+        return 0; // Esto es solo un placeholder
+    }
+
+    private int SumatoriadeNumerosNaturales(int n) {
+        // Tu lógica de cálculo de sumatoria de números naturales aquí...
+
+        return 0; // Esto es solo un placeholder
+    }
+
+    private int Listadodenumerosenunrango(int inicio, int fin) {
+        // Tu lógica de listado de números en un rango aquí...
+
+        return 0; // Esto es solo un placeholder
+    }
+
 
     // Implementa los demás métodos de forma similar a contarGenesDemo()
 
