@@ -1,5 +1,3 @@
-import javax.sound.sampled.AudioSystem;
-import javax.sound.sampled.Clip;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -72,6 +70,7 @@ public class MAIN extends JFrame {
         JButton btnAsistente = new JButton("Asistente Virtual");
         btnAsistente.addActionListener(e -> abrirAsistenteVirtual());
         panel.add(btnAsistente);
+
 
         setVisible(true);
     }
