@@ -161,9 +161,28 @@ public class MAIN extends JFrame {
     }
 
     private void gestionarFechasDemo() {
-        // Implementación similar a la original, pero usando JOptionPane en lugar de System.out
-        JOptionPane.showMessageDialog(this, "Función 'Gestión de Fechas' seleccionada.");
+        List<LocalDate> fechas = new ArrayList<>();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        while (true) {
+            String entrada = JOptionPane.showInputDialog(this, "Introduzca una fecha (dd/MM/yyyy) o escriba 'fin' para terminar:");
+            if (entrada == null || entrada.equalsIgnoreCase("fin")) {
+                break;
+            }
+            try {
+                LocalDate fecha = LocalDate.parse(entrada, formatter);
+                fechas.add(fecha);
+            } catch (DateTimeParseException e) {
+                JOptionPane.showMessageDialog(this, "Formato de fecha inválido. Inténtalo de nuevo.");
+            }
+        }
+        Collections.sort(fechas);
+        StringBuilder sb = new StringBuilder("Fechas ordenadas:\n");
+        for (LocalDate fecha : fechas) {
+            sb.append(fecha.format(formatter)).append("\n");
+        }
+        JOptionPane.showMessageDialog(this, sb.toString());
     }
+
 
     private void buscarEnArchivoDemo() {
         // Implementación similar a la original, pero usando JOptionPane en lugar de System.out
