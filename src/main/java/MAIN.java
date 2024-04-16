@@ -38,10 +38,10 @@ public class MAIN extends JFrame {
         btnConteoGenes.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String cadenaADN = JOptionPane.showInputDialog(MainGUI.this, "Ingrese la cadena de ADN:");
+                String cadenaADN = JOptionPane.showInputDialog(MAIN.this, "Ingrese la cadena de ADN:");
                 if (cadenaADN != null) {
                     int numeroGenes = contarGenes(cadenaADN);
-                    JOptionPane.showMessageDialog(MainGUI.this, "El número de genes en la cadena de ADN es: " + numeroGenes);
+                    JOptionPane.showMessageDialog(MAIN.this, "El número de genes en la cadena de ADN es: " + numeroGenes);
                 }
             }
         });
