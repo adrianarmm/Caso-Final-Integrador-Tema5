@@ -57,11 +57,6 @@ public class MAIN extends JFrame {
             panel.add(button);
         }
 
-        for (String label : buttonLabels) {
-            JButton button = new JButton(label);
-            button.addActionListener(this::actionPerformed);
-            panel.add(button);
-        }
 
         add(panel);
         setVisible(true);
