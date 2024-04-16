@@ -3,6 +3,7 @@ import javax.sound.sampled.Clip;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -81,11 +82,38 @@ public class MAIN extends JFrame {
     }
 
     private void abrirJuegoTicTacToe() {
-        // Lógica para abrir tu juego Tic-Tac-Toe
         JFrame juegoFrame = new JFrame("Tic-Tac-Toe");
         juegoFrame.setSize(300, 300);
         juegoFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         juegoFrame.setLocationRelativeTo(null);
+
+        JPanel panel = new JPanel();
+        panel.setLayout(new GridLayout(3, 3)); // Grid de 3x3 para Tic-Tac-Toe
+        final boolean[] turnoX = {true}; // Turno del jugador, true para X, false para O
+
+        ActionListener al = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JButton btn = (JButton) e.getSource();
+                if (turnoX[0]) {
+                    btn.setText("X");
+                } else {
+                    btn.setText("O");
+                }
+                btn.setEnabled(false); // Desactiva el botón después de ser presionado
+                turnoX[0] = !turnoX[0]; // Cambia el turno
+                // Aquí podrías añadir la lógica para verificar si hay un ganador
+            }
+        };
+
+        // Crear y añadir botones al panel
+        for (int i = 0; i < 9; i++) {
+            JButton btn = new JButton();
+            btn.addActionListener(al);
+            panel.add(btn);
+        }
+
+        juegoFrame.add(panel);
         juegoFrame.setVisible(true);
     }
 
