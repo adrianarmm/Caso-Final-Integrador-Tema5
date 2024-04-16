@@ -199,6 +199,20 @@ public class MAIN extends JFrame {
             }
         });
 
+        btnEncontrarMaximo.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int[] datos = { 1, 2, 3, 4, 5 };
+                int[] posiciones = { 0 };
+                int indice = datos.length - 1;
+                int resultado = MaximoPosicion.maximo(datos, indice, posiciones);
+                JOptionPane.showMessageDialog(MAIN.this, "El número máximo en el arreglo es: " + resultado + "\n" +
+                        "La posición del número máximo en el arreglo es: " + posiciones[0]);
+            }
+        });
+
+
+
 
 
 
