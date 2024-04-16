@@ -279,9 +279,18 @@ public class MAIN extends JFrame {
 
 
     private void ordenarLineasArchivoDemo() {
-        // Implementación para leer, ordenar y mostrar líneas de un archivo
-        JOptionPane.showMessageDialog(this, "Función 'Ordenar Líneas de un Archivo de Texto' seleccionada.");
+        String filePath = JOptionPane.showInputDialog(this, "Ingrese la ruta del archivo:");
+        if (filePath != null && !filePath.trim().isEmpty()) {
+            try {
+                List<String> lineas = Files.readAllLines(Paths.get(filePath));
+                Collections.sort(lineas);
+                JOptionPane.showMessageDialog(this, "Líneas ordenadas del archivo:\n" + String.join("\n", lineas));
+            } catch (IOException e) {
+                JOptionPane.showMessageDialog(this, "Error al leer el archivo: " + e.getMessage());
+            }
+        }
     }
+
 
     private void encontrarMaximoYPosicionDemo() {
         // Implementación similar a la original, pero usando JOptionPane en lugar de System.out
