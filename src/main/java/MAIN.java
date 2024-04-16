@@ -18,6 +18,10 @@ public class MAIN extends JFrame {
 
     public MAIN() {
         super("Software de Análisis Genómico y Organización de Datos");
+
+        setNimbusLookAndFeel();
+
+
         setSize(600, 400);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
@@ -46,6 +50,20 @@ public class MAIN extends JFrame {
         add(panel);
         setVisible(true);
     }
+
+    private void setNimbusLookAndFeel() {
+        try {
+            for (UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException e) {
+            System.out.println("No se pudo establecer Nimbus LookAndFeel");
+        }
+    }
+
 
     private void actionPerformed(ActionEvent e) {
         switch (e.getActionCommand()) {
