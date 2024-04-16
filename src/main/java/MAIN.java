@@ -27,7 +27,7 @@ public class MAIN extends JFrame {
                         contarGenesDemo();
                         break;
                     case "2":
-                        countComponents();
+                        CombinacionesGeneticas();
                         break;
                     // Agrega casos para las demás opciones
                     case "10":
@@ -51,12 +51,16 @@ public class MAIN extends JFrame {
     }
 
     private void contarGenesDemo() {
-        // Por ejemplo, aquí puedes usar JOptionPane para mostrar y recoger información
         String cadenaADN = JOptionPane.showInputDialog(this, "Ingrese la cadena de ADN:");
-        // Llama a la lógica de tu aplicación
         int numeroGenes = contarGenes(cadenaADN);
         JOptionPane.showMessageDialog(this, "El número de genes en la cadena de ADN es: " + numeroGenes);
     }
+
+    public void CombinacionesGeneticas() {
+        int count = getContentPane().getComponentCount();
+        JOptionPane.showMessageDialog(this, "El número de componentes en el contenedor es: " + count);
+    }
+
 
     // Aquí deberías implementar los métodos de tu aplicación, por ejemplo:
     private int contarGenes(String cadenaADN) {
