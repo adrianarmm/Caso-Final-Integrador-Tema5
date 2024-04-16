@@ -185,14 +185,49 @@ public class MAIN extends JFrame {
 
 
     private void buscarEnArchivoDemo() {
-        // Implementación similar a la original, pero usando JOptionPane en lugar de System.out
-        JOptionPane.showMessageDialog(this, "Función 'Búsqueda Binaria en Archivo' seleccionada.");
+        String filePath = JOptionPane.showInputDialog(this, "Ingrese la ruta del archivo:");
+        String palabraBuscada = JOptionPane.showInputDialog(this, "Ingrese la palabra a buscar:");
+
+        try {
+            List<String> lineas = Files.readAllLines(Paths.get(filePath));
+            Collections.sort(lineas); // Asegura que las líneas estén ordenadas para la búsqueda binaria
+            int resultado = Collections.binarySearch(lineas, palabraBuscada);
+
+            if (resultado >= 0) {
+                JOptionPane.showMessageDialog(this, "La palabra '" + palabraBuscada + "' se encontró en la línea " + (resultado + 1));
+            } else {
+                JOptionPane.showMessageDialog(this, "La palabra '" + palabraBuscada + "' no se encontró en el archivo.");
+            }
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(this, "Error al leer el archivo: " + e.getMessage());
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Ocurrió un error: " + e.getMessage());
+        }
     }
 
+
     private void listarNumerosEnRangoDemo() {
-        // Implementación similar a la original, pero usando JOptionPane en lugar de System.out
-        JOptionPane.showMessageDialog(this, "Función 'Listado de Números en un Rango' seleccionada.");
+        String input = JOptionPane.showInputDialog(this, "Ingrese el rango de números separados por un espacio (inicio fin):");
+        if (input != null && !input.trim().isEmpty()) {
+            String[] parts = input.split(" ");
+            if (parts.length == 2) {
+                try {
+                    int inicio = Integer.parseInt(parts[0]);
+                    int fin = Integer.parseInt(parts[1]);
+                    StringBuilder numeros = new StringBuilder();
+                    for (int i = inicio; i <= fin; i++) {
+                        numeros.append(i).append(" ");
+                    }
+                    JOptionPane.showMessageDialog(this, "Números en el rango: " + numeros.toString());
+                } catch (NumberFormatException e) {
+                    JOptionPane.showMessageDialog(this, "Por favor, introduzca números válidos.");
+                }
+            } else {
+                JOptionPane.showMessageDialog(this, "Formato de rango no válido. Por favor, introduzca dos números separados por un espacio.");
+            }
+        }
     }
+
 
     private void sumatoriaNumerosNaturalesDemo() {
         // Implementación similar a la original, pero usando JOptionPane en lugar de System.out
