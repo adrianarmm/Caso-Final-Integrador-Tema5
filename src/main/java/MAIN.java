@@ -68,6 +68,10 @@ public class MAIN extends JFrame {
         btnAsistente.addActionListener(e -> abrirAsistenteVirtual());
         panel.add(btnAsistente);
 
+        JButton btnSonido = new JButton("Reproducir Sonido");
+        btnSonido.addActionListener(e -> reproducirSonido("/Users/adrianareyesmorera/Desktop/menu-button-pack-190040.wav"));
+        panel.add(btnSonido);
+
 
         setVisible(true);
     }
