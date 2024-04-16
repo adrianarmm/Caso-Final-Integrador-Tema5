@@ -246,9 +246,37 @@ public class MAIN extends JFrame {
     }
 
     private void demoQuicksortDemo() {
-        // Implementación similar a la original, pero usando JOptionPane en lugar de System.out
-        JOptionPane.showMessageDialog(this, "Función 'Demostración de Quicksort' seleccionada.");
+        int[] arreglo = {10, 7, 8, 9, 1, 5};
+        JOptionPane.showMessageDialog(this, "Arreglo original: " + Arrays.toString(arreglo));
+        quicksort(arreglo, 0, arreglo.length - 1);
+        JOptionPane.showMessageDialog(this, "Arreglo ordenado: " + Arrays.toString(arreglo));
     }
+
+    private void quicksort(int[] arreglo, int inicio, int fin) {
+        if (inicio < fin) {
+            int indiceParticion = partition(arreglo, inicio, fin);
+            quicksort(arreglo, inicio, indiceParticion - 1);
+            quicksort(arreglo, indiceParticion + 1, fin);
+        }
+    }
+
+    private int partition(int[] arreglo, int inicio, int fin) {
+        int pivote = arreglo[fin];
+        int i = (inicio - 1);
+        for (int j = inicio; j < fin; j++) {
+            if (arreglo[j] <= pivote) {
+                i++;
+                int temp = arreglo[i];
+                arreglo[i] = arreglo[j];
+                arreglo[j] = temp;
+            }
+        }
+        int temp = arreglo[i + 1];
+        arreglo[i + 1] = arreglo[fin];
+        arreglo[fin] = temp;
+        return i + 1;
+    }
+
 
     private void ordenarLineasArchivoDemo() {
         // Implementación para leer, ordenar y mostrar líneas de un archivo
