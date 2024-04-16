@@ -79,8 +79,28 @@ public class MAIN extends JFrame {
     }
 
     public void CombinacionesGeneticas() {
-        int count = getContentPane().getComponentCount();
-        JOptionPane.showMessageDialog(this, "El número de componentes en el contenedor es: " + count);
+        JTextField genesField = new JTextField(5);
+        JTextField alelosField = new JTextField(5);
+
+        JPanel myPanel = new JPanel();
+        myPanel.add(new JLabel("Número de genes:"));
+        myPanel.add(genesField);
+        myPanel.add(Box.createHorizontalStrut(15)); // a spacer
+        myPanel.add(new JLabel("Número de alelos:"));
+        myPanel.add(alelosField);
+
+        int result = JOptionPane.showConfirmDialog(null, myPanel,
+                 "Por favor ingrese el número de genes y alelos", JOptionPane.OK_CANCEL_OPTION);
+
+        if (result == JOptionPane.OK_OPTION) {
+            int numeroGenes = Integer.parseInt(genesField.getText());
+            int numeroAlelos = Integer.parseInt(alelosField.getText());
+            int combinacionesGeneticas = CombinacionesGeneticas(numeroGenes, numeroAlelos);
+            JOptionPane.showMessageDialog(this, "El número de combinaciones genéticas posibles es: " + combinacionesGeneticas);
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Por favor ingrese un número válido");
+        }
+
     }
 
     public void BusquedaBinaria() {
@@ -134,8 +154,10 @@ public class MAIN extends JFrame {
         return 0; // Esto es solo un placeholder
     }
 
-    private int CombinacionesGeneticas(int numeroGenes, int numeroAlelos) {
-        // Tu lógica de combinaciones genéticas aquí...
+    public int CombinacionesGeneticas(int numeroGenes, int numeroAlelos) {
+       if (numeroGenes <= 0) {
+            return 0;
+        }
 
         return 0; // Esto es solo un placeholder
     }
