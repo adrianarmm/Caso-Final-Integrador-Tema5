@@ -9,8 +9,10 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+
 
 public class MAIN extends JFrame {
 
@@ -172,7 +174,7 @@ public class MAIN extends JFrame {
                         throw new NumberFormatException();
                     }
 
-                    long sumatoria = sumatoriaDeNumerosNaturales(n);
+                    long sumatoria = SumatoriaDeNumerosNaturales.sumatoriaDeNumerosNaturales(n);
                     JOptionPane.showMessageDialog(MAIN.this, "La sumatoria de los primeros " + n + " números naturales es: " + sumatoria);
                 } catch (NumberFormatException ex) {
                     JOptionPane.showMessageDialog(MAIN.this, "Por favor ingrese un número natural válido.");
@@ -184,7 +186,7 @@ public class MAIN extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 int[] arreglo = {10, 7, 8, 9, 1, 5};
-                quicksort(arreglo, 0, arreglo.length - 1);
+                OptimizedQuicksort.quicksort(arreglo, 0, arreglo.length - 1);
                 JOptionPane.showMessageDialog(MAIN.this, "Arreglo ordenado mediante Quicksort: " + Arrays.toString(arreglo));
             }
         });
