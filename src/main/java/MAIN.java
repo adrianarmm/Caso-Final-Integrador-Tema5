@@ -41,6 +41,22 @@ public class MAIN extends JFrame {
                 "9. Encontrar el Valor Máximo y su Posición en un Arreglo"
         };
 
+        Color[] colors = {
+                Color.RED, Color.ORANGE, Color.YELLOW, Color.GREEN,
+                Color.BLUE, new Color(75, 0, 130), // Índigo
+                new Color(238, 130, 238), // Violeta
+                Color.PINK, Color.LIGHT_GRAY
+        };
+
+        for (int i = 0; i < buttonLabels.length; i++) {
+            JButton button = new JButton(buttonLabels[i]);
+            button.setBackground(colors[i]);
+            button.setOpaque(true); // Para Nimbus y otros look and feel que no muestran el color de fondo
+            button.setBorderPainted(false); // También para Nimbus y similares
+            button.addActionListener(this::actionPerformed);
+            panel.add(button);
+        }
+
         for (String label : buttonLabels) {
             JButton button = new JButton(label);
             button.addActionListener(this::actionPerformed);
