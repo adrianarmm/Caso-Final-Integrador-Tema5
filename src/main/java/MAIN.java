@@ -1,6 +1,9 @@
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -57,12 +60,42 @@ public class MAIN extends JFrame {
 
 
         add(panel);
+        JButton btnJuego = new JButton("Juego Tic-Tac-Toe");
+        btnJuego.addActionListener(e -> abrirJuegoTicTacToe());
+        panel.add(btnJuego);
+
+        JButton btnAsistente = new JButton("Asistente Virtual");
+        btnAsistente.addActionListener(e -> abrirAsistenteVirtual());
+        panel.add(btnAsistente);
 
 
         setVisible(true);
     }
 
+    private void abrirJuegoTicTacToe() {
+        // Lógica para abrir tu juego Tic-Tac-Toe
+        JFrame juegoFrame = new JFrame("Tic-Tac-Toe");
+        juegoFrame.setSize(300, 300);
+        juegoFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        juegoFrame.setLocationRelativeTo(null);
+        juegoFrame.setVisible(true);
+    }
 
+    private void reproducirSonido(String rutaSonido) {
+        try {
+            Clip clip = AudioSystem.getClip();
+            clip.open(AudioSystem.getAudioInputStream(new File(rutaSonido)));
+            clip.start();
+        } catch (Exception e) {
+            System.err.println("Error al reproducir el sonido: " + e.getMessage());
+        }
+    }
+
+    private void abrirAsistenteVirtual() {
+        String pregunta = JOptionPane.showInputDialog(this, "¿Cómo puedo ayudarte?");
+        // Lógica simple para responder a la pregunta. Amplía según sea necesario.
+        JOptionPane.showMessageDialog(this, "Todavía estoy aprendiendo. No conozco la respuesta.");
+    }
 
 
     private void setNimbusLookAndFeel() {
