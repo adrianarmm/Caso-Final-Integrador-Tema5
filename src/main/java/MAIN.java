@@ -29,10 +29,32 @@ public class MAIN extends JFrame {
                     case "2":
                         CombinacionesGeneticas();
                         break;
-                    // Agrega casos para las demás opciones
-                    case "10":
-                        System.exit(0);
+                    case "3":
+                        BusquedaBinaria();
                         break;
+                    case "4":
+                        MaximoPosicion();
+                        break;
+                    case "5":
+                        Maximo();
+                        break;
+                    case "6":
+                        OptimizedQuickSort();
+                        break;
+                    case "7":
+                        OrdenarLineas();
+                        break;
+                    case "8":
+                        Potencias();
+                        break;
+                    case "9":
+                        SumatoriadeNumerosNaturales();
+                        break;
+                    case "10":
+                        Listadodenumerosenunrango();
+                        break;
+                        case "11":
+                            System.exit(0);
                     default:
                         JOptionPane.showMessageDialog(null, "Opción no válida");
                 }
