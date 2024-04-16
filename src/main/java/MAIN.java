@@ -22,6 +22,10 @@ public class MAIN extends JFrame {
 
         setNimbusLookAndFeel();
 
+        JButton btnJuego2 = new JButton("Juego Tic-Tac-Toe");
+        btnJuego2.addActionListener(e -> abrirJuegoTicTacToe());
+        // Añadir botón al panel y otras configuraciones...
+
 
         setSize(600, 400);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
