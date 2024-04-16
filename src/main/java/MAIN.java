@@ -228,10 +228,21 @@ public class MAIN extends JFrame {
         }
     }
 
-
     private void sumatoriaNumerosNaturalesDemo() {
-        // Implementación similar a la original, pero usando JOptionPane en lugar de System.out
-        JOptionPane.showMessageDialog(this, "Función 'Sumatoria de Números Naturales' seleccionada.");
+        String input = JOptionPane.showInputDialog(this, "Ingrese un número para calcular la sumatoria de números naturales hasta él:");
+        if (input != null && !input.trim().isEmpty()) {
+            try {
+                int n = Integer.parseInt(input);
+                if (n < 1) {
+                    JOptionPane.showMessageDialog(this, "Por favor, introduzca un número mayor o igual a 1.");
+                } else {
+                    long sumatoria = (long) n * (n + 1) / 2;
+                    JOptionPane.showMessageDialog(this, "La sumatoria de los primeros " + n + " números naturales es: " + sumatoria);
+                }
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(this, "Por favor, introduzca un número válido.");
+            }
+        }
     }
 
     private void demoQuicksortDemo() {
