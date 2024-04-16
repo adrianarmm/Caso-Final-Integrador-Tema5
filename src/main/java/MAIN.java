@@ -196,20 +196,111 @@ public class MAIN extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 String filePath = JOptionPane.showInputDialog(MAIN.this, "Ingrese la ruta del archivo:");
                 ordenarLineasArchivo(filePath);
+                            );
             }
         });
 
         btnEncontrarMaximo.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                int[] datos = { 1, 2, 3, 4, 5 };
-                int[] posiciones = { 0 };
-                int indice = datos.length - 1;
-                int resultado = MaximoPosicion.maximo(datos, indice, posiciones);
-                JOptionPane.showMessageDialog(MAIN.this, "El número máximo en el arreglo es: " + resultado + "\n" +
+                int[] datos = {1, 2, 3, 4, 5, 6, 2, 1};
+                int[] posiciones = new int[1];
+                int resultadoMaximo = maximo(datos, datos.length - 1, posiciones);
+                JOptionPane.showMessageDialog(MainGUI.this, "El número máximo en el arreglo es: " + resultadoMaximo + "\n" +
                         "La posición del número máximo en el arreglo es: " + posiciones[0]);
             }
         });
+
+        // Agregar botones al panel
+        panel.add(btnConteoGenes);
+        panel.add(btnCalcCombinaciones);
+        panel.add(btnGestionFechas);
+        panel.add(btnBuscarArchivo);
+        panel.add(btnListarNumeros);
+        panel.add(btnSumatoriaNaturales);
+        panel.add(btnDemoQuicksort);
+        panel.add(btnOrdenarLineasArchivo);
+        panel.add(btnEncontrarMaximo);
+
+        add(panel);
+
+        setVisible(true);
+    }
+
+    private static int contarGenes(String cadenaADN) {
+        int contadorGenes = 0;
+        int inicio = 0;
+
+        while (true) {
+            int locInicio = cadenaADN.indexOf("ATG", inicio);
+            if (locInicio == -1) {
+                // No se encuentra más "ATG"
+                break;
+            }
+            int locFin = encontrarFinGen(cadenaADN, locInicio + 3);
+            if (locFin != -1) {
+                contadorGenes++;
+                inicio = locFin + 3;
+            } else {
+                // No se encontró una secuencia de parada válida después de este "ATG"
+                inicio = locInicio + 3;
+            }
+        }
+
+        return contadorGenes;
+    }
+
+    private static int encontrarFinGen(String cadenaADN, int inicio) {
+        int locTAA = cadenaADN.indexOf("TAA", inicio);
+        int locTAG = cadenaADN.indexOf("TAG", inicio);
+        int locTGA = cadenaADN.indexOf("TGA", inicio);
+
+        // Encuentra el índice más cercano
+        int minLoc = Math.min(locTAA != -1 ? locTAA : cadenaADN.length(),
+                Math.min(locTAG != -1 ? locTAG : cadenaADN.length(),
+                        locTGA != -1 ? locTGA : cadenaADN.length()));
+
+        return (minLoc == cadenaADN.length()) ? -1 : minLoc;
+    }
+
+    private static int calcularCombinacionesGeneticas(int numeroGenes, int numeroAlelos) {
+        return (int) Math.pow(numeroAlelos, numeroGenes);
+    }
+
+    private static void gestionarFechas() {
+
+    }
+
+    private static void buscarEnArchivoDemo() {
+        // Implementación similar a la original, pero usando JOptionPane en lugar de System.out
+    }
+
+    private static void listarNumerosEnRangoDemo() {
+        // Implementación similar a la original, pero usando JOptionPane en lugar de System.out
+    }
+
+    private static long sumatoriaDeNumerosNaturales(int n) {
+        // Implementación similar a la original
+    }
+
+    private static void demoQuicksort() {
+        // Implementación similar a la original
+    }
+
+    private static void ordenarLineasArchivo(String filePath) {
+        // Implementación similar a la original, pero usando JOptionPane enlugar de System.out
+    }
+
+    private static int maximo(int[] datos, int indice, int[] posiciones) {
+        // Implementación similar a la original
+    }
+
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(MAIN::new);
+    }
+}
+
+
 
 
 
