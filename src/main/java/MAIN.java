@@ -50,38 +50,38 @@ public class MAIN extends JFrame {
     private void actionPerformed(ActionEvent e) {
         switch (e.getActionCommand()) {
             case "1. Conteo de Genes":
-                contarGenesDemo();
+                ConteoDeGenes();
                 break;
             case "2. Cálculo de Combinaciones Genéticas":
-                calcularCombinacionesGeneticasDemo();
+                CombinacionesGeneticas();
                 break;
             case "3. Gestión de Fechas":
-                gestionarFechasDemo();
+                GestionFechas();
                 break;
             case "4. Búsqueda Binaria en Archivo":
-                buscarEnArchivoDemo();
+                BusquedaBinaria();
                 break;
             case "5. Listado de Números en un Rango":
-                listarNumerosEnRangoDemo();
+                Listadodenumerosenunrango();
                 break;
             case "6. Sumatoria de Números Naturales":
-                sumatoriaNumerosNaturalesDemo();
+                SumatoriaDeNumerosNaturales();
                 break;
             case "7. Demostración de Quicksort":
-                demoQuicksortDemo();
+                OptimizedQuicksort();
                 break;
             case "8. Ordenar Líneas de un Archivo de Texto":
-                ordenarLineasArchivoDemo();
+                OrdenarLineas();
                 break;
             case "9. Encontrar el Valor Máximo y su Posición en un Arreglo":
-                encontrarMaximoYPosicionDemo();
+                MaximoPosicion();
                 break;
             default:
                 JOptionPane.showMessageDialog(this, "Opción no válida.");
         }
     }
 
-    private void contarGenesDemo() {
+    private void ConteoDeGenes() {
         JOptionPane.showMessageDialog(this, "Función 'Conteo de Genes' seleccionada.");
 
         String cadenaADN = JOptionPane.showInputDialog(this, "Ingrese la cadena de ADN:");
@@ -128,7 +128,7 @@ public class MAIN extends JFrame {
     }
 
 
-    private void calcularCombinacionesGeneticasDemo() {
+    private void CombinacionesGeneticas() {
         JOptionPane.showMessageDialog(this, "Función 'Cálculo de Combinaciones Genéticas' seleccionada.");
 
         JTextField genesField = new JTextField(5);
@@ -160,7 +160,7 @@ public class MAIN extends JFrame {
         return (int) Math.pow(numeroAlelos, numeroGenes);
     }
 
-    private void gestionarFechasDemo() {
+    private void GestionFechas() {
         List<LocalDate> fechas = new ArrayList<>();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         while (true) {
@@ -184,7 +184,7 @@ public class MAIN extends JFrame {
     }
 
 
-    private void buscarEnArchivoDemo() {
+    private void BusquedaBinaria() {
         String filePath = JOptionPane.showInputDialog(this, "Ingrese la ruta del archivo:");
         String palabraBuscada = JOptionPane.showInputDialog(this, "Ingrese la palabra a buscar:");
 
@@ -206,7 +206,7 @@ public class MAIN extends JFrame {
     }
 
 
-    private void listarNumerosEnRangoDemo() {
+    private void Listadodenumerosenunrango() {
         String input = JOptionPane.showInputDialog(this, "Ingrese el rango de números separados por un espacio (inicio fin):");
         if (input != null && !input.trim().isEmpty()) {
             String[] parts = input.split(" ");
@@ -228,7 +228,7 @@ public class MAIN extends JFrame {
         }
     }
 
-    private void sumatoriaNumerosNaturalesDemo() {
+    private void SumatoriaDeNumerosNaturales() {
         String input = JOptionPane.showInputDialog(this, "Ingrese un número para calcular la sumatoria de números naturales hasta él:");
         if (input != null && !input.trim().isEmpty()) {
             try {
@@ -245,7 +245,7 @@ public class MAIN extends JFrame {
         }
     }
 
-    private void demoQuicksortDemo() {
+    private void OptimizedQuicksort() {
         int[] arreglo = {10, 7, 8, 9, 1, 5};
         JOptionPane.showMessageDialog(this, "Arreglo original: " + Arrays.toString(arreglo));
         quicksort(arreglo, 0, arreglo.length - 1);
@@ -278,7 +278,7 @@ public class MAIN extends JFrame {
     }
 
 
-    private void ordenarLineasArchivoDemo() {
+    private void OrdenarLineas() {
         String filePath = JOptionPane.showInputDialog(this, "Ingrese la ruta del archivo:");
         if (filePath != null && !filePath.trim().isEmpty()) {
             try {
@@ -292,10 +292,51 @@ public class MAIN extends JFrame {
     }
 
 
-    private void encontrarMaximoYPosicionDemo() {
-        // Implementación similar a la original, pero usando JOptionPane en lugar de System.out
-        JOptionPane.showMessageDialog(this, "Función 'Encontrar el Valor Máximo y su Posición en un Arreglo' seleccionada.");
+    private void MaximoPosicion() {
+        // Solicita al usuario ingresar una serie de números separados por comas
+        String input = JOptionPane.showInputDialog(this, "Ingrese una serie de números separados por comas:");
+        if (input != null && !input.trim().isEmpty()) {
+            try {
+                // Convierte la entrada del usuario en un arreglo de números
+                String[] partes = input.split(",");
+                int[] numeros = new int[partes.length];
+                for (int i = 0; i < partes.length; i++) {
+                    numeros[i] = Integer.parseInt(partes[i].trim());
+                }
+
+                // Encuentra el valor máximo y su posición
+                int[] resultado = encontrarMaximoYPosicion(numeros);
+                int maximo = resultado[0];
+                int posicion = resultado[1];
+
+                // Muestra el resultado
+                JOptionPane.showMessageDialog(this, "El valor máximo es: " + maximo + ", encontrado en la posición: " + posicion);
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(this, "Por favor, introduzca una serie válida de números.");
+            }
+        }
     }
+
+    /**
+     * Encuentra el valor máximo en el arreglo y su posición.
+     * @param numeros El arreglo de números a analizar.
+     * @return Un arreglo donde la primera posición es el valor máximo y la segunda su posición.
+     */
+    private int[] encontrarMaximoYPosicion(int[] numeros) {
+        if (numeros == null || numeros.length == 0) {
+            return new int[]{0, -1}; // Retorna un valor por defecto si el arreglo está vacío
+        }
+        int maximo = numeros[0];
+        int posicion = 0;
+        for (int i = 1; i < numeros.length; i++) {
+            if (numeros[i] > maximo) {
+                maximo = numeros[i];
+                posicion = i;
+            }
+        }
+        return new int[]{maximo, posicion};
+    }
+
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(MAIN::new);
