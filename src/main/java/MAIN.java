@@ -159,7 +159,12 @@ public class MAIN extends JFrame {
             return 0;
         }
 
-        return 0; // Esto es solo un placeholder
+        if (numeroGenes == 1) {
+            return numeroAlelos;
+        }
+
+        return numeroAlelos * CombinacionesGeneticas(numeroGenes - 1, numeroAlelos);
+
     }
 
     private int BusquedaBinaria(int[] datos, int dato) {
